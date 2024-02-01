@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1087055840936",
+    "project_id": "instacleanarchitecture",
+    "storage_bucket": "instacleanarchitecture.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1087055840936:android:decc30c2982cb414b0e49d",
+        "android_client_info": {
+          "package_name": "com.example.insta_cleanarchitecture"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB482erI0MHKS3WXwJnTJSzDqUIC7DjJoQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
