@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:insta_cleanarchitecture/features/presentation/cubit/auth/authcubit.dart';
 import 'package:insta_cleanarchitecture/features/presentation/cubit/auth/authstate.dart';
 import 'package:insta_cleanarchitecture/features/presentation/cubit/credential/credentialcubit.dart';
+import 'package:insta_cleanarchitecture/features/presentation/cubit/user/getsingleothercubit/getsingleotherusercubit.dart';
 import 'package:insta_cleanarchitecture/features/presentation/cubit/user/usercubit.dart';
 import 'package:insta_cleanarchitecture/features/presentation/pages/credential/signinpage.dart';
 import 'package:insta_cleanarchitecture/features/presentation/pages/mainscreen/mainscreen.dart';
@@ -12,7 +13,7 @@ import 'features/presentation/cubit/user/getsingleuser/getsingleusercubit.dart';
 import 'firebase_options.dart';
 import 'package:insta_cleanarchitecture/injection container.dart' as di;
 
-Future main() async {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
@@ -32,6 +33,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (_) => di.sl<CredentialCubit>()),
         BlocProvider(create: (_) => di.sl<UserCubit>()),
         BlocProvider(create: (_) => di.sl<GetSingleUserCubit>()),
+        BlocProvider(create: (_) => di.sl<GetSingleOtherUserCubit>()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

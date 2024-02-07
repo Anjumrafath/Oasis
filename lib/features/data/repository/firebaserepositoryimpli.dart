@@ -1,6 +1,8 @@
 import 'dart:io';
 
+import 'package:insta_cleanarchitecture/features/domain/entity/comment/commententity.dart';
 import 'package:insta_cleanarchitecture/features/domain/entity/posts/postentity.dart';
+import 'package:insta_cleanarchitecture/features/domain/entity/reply/replyentity.dart';
 
 import '../../domain/entity/user/userentity.dart';
 import '../../domain/repository/firebaserepository.dart';
@@ -71,4 +73,56 @@ class FirebaseRepositoryImpli implements FirebaseRepository {
   @override
   Future<void> updatePost(PostEntity post) async =>
       remoteDataSource.updatePost(post);
+
+  @override
+  Future<void> createComment(CommentEntity comment) async =>
+      remoteDataSource.createComment(comment);
+
+  @override
+  Future<void> deleteComment(CommentEntity comment) async =>
+      remoteDataSource.deleteComment(comment);
+
+  @override
+  Future<void> likeComment(CommentEntity comment) async =>
+      remoteDataSource.likeComment(comment);
+
+  @override
+  Stream<List<CommentEntity>> readComments(String postId) =>
+      remoteDataSource.readComments(postId);
+
+  @override
+  Future<void> updateComment(CommentEntity comment) async =>
+      remoteDataSource.updateComment(comment);
+
+  @override
+  Stream<List<PostEntity>> readSinglePost(String postId) =>
+      remoteDataSource.readSinglePost(postId);
+
+  @override
+  Future<void> createReplay(ReplayEntity replay) async =>
+      remoteDataSource.createReplay(replay);
+
+  @override
+  Future<void> deleteReplay(ReplayEntity replay) async =>
+      remoteDataSource.deleteReplay(replay);
+
+  @override
+  Future<void> likeReplay(ReplayEntity replay) async =>
+      remoteDataSource.likeReplay(replay);
+
+  @override
+  Stream<List<ReplayEntity>> readReplays(ReplayEntity replay) =>
+      remoteDataSource.readReplays(replay);
+
+  @override
+  Future<void> updateReplay(ReplayEntity replay) async =>
+      remoteDataSource.updateReplay(replay);
+
+  @override
+  Future<void> followUnFollowUser(UserEntity user) async =>
+      remoteDataSource.followUnFollowUser(user);
+
+  @override
+  Stream<List<UserEntity>> getSingleOtherUser(String otherUid) =>
+      remoteDataSource.getSingleOtherUser(otherUid);
 }

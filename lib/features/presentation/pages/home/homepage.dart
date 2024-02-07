@@ -1,22 +1,14 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:insta_cleanarchitecture/const.dart';
-
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:insta_cleanarchitecture/const.dart';
 import 'package:insta_cleanarchitecture/features/domain/entity/posts/postentity.dart';
-import 'package:insta_cleanarchitecture/features/domain/entity/user/userentity.dart';
 import 'package:insta_cleanarchitecture/features/presentation/cubit/post/postcubit.dart';
 import 'package:insta_cleanarchitecture/features/presentation/cubit/post/poststate.dart';
 import 'package:insta_cleanarchitecture/features/presentation/pages/home/widgets/singlepostcardwidget.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:insta_cleanarchitecture/features/presentation/pages/post/widget/uploadpostmainwidget.dart';
 import 'package:insta_cleanarchitecture/injection container.dart' as di;
-import 'package:uuid/uuid.dart';
-import 'package:insta_cleanarchitecture/features/domain/entity/posts/postentity.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({
-    super.key,
-  });
+  const HomePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -39,27 +31,46 @@ class HomePage extends StatelessWidget {
       ),
       body: BlocProvider<PostCubit>(
         create: (context) => di.sl<PostCubit>()..getPosts(post: PostEntity()),
-        child: BlocBuilder<PostCubit, PostState>(builder: (context, postState) {
-          if (postState is PostLoading) {
+        child: BlocBuilder<PostCubit, PostState>(
+          builder: (context, postState) {
+            if (postState is PostLoading) {
+              return Center(
+                child: CircularProgressIndicator(),
+              );
+            }
+            if (postState is PostFailure) {
+              toast("Some Failure occured while creating the post");
+            }
+            if (postState is PostLoaded) {
+              return postState.posts.isEmpty
+                  ? _noPostsYetWidget()
+                  : ListView.builder(
+                      itemCount: postState.posts.length,
+                      itemBuilder: (context, index) {
+                        final post = postState.posts[index];
+                        return BlocProvider(
+                          create: (context) => di.sl<PostCubit>(),
+                          child: SinglePostCardWidget(post: post),
+                        );
+                      },
+                    );
+            }
+
             return Center(
               child: CircularProgressIndicator(),
             );
-          }
-          if (postState is PostFailure) {
-            toast("some failure occured while creating the post");
-          }
-          if (postState is PostLoaded) {
-            return ListView.builder(
-                itemCount: postState.posts.length,
-                itemBuilder: (context, index) {
-                  final post = postState.posts[index];
-                  return SinglePostCardWidget(post: post);
-                });
-          }
-          return Center(
-            child: CircularProgressIndicator(),
-          );
-        }),
+          },
+        ),
+      ),
+    );
+  }
+
+  _noPostsYetWidget() {
+    return Center(
+      child: Text(
+        "No Posts Yet",
+        style: TextStyle(
+            color: Colors.white, fontWeight: FontWeight.bold, fontSize: 18),
       ),
     );
   }

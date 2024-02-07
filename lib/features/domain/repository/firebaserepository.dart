@@ -1,6 +1,8 @@
 import 'dart:io';
 
+import 'package:insta_cleanarchitecture/features/domain/entity/comment/commententity.dart';
 import 'package:insta_cleanarchitecture/features/domain/entity/posts/postentity.dart';
+import 'package:insta_cleanarchitecture/features/domain/entity/reply/replyentity.dart';
 
 import '../entity/user/userentity.dart';
 
@@ -17,6 +19,8 @@ abstract class FirebaseRepository {
   Future<String> getCurrentUid();
   Future<void> createUser(UserEntity user);
   Future<void> updateUser(UserEntity user);
+  Future<void> followUnFollowUser(UserEntity user);
+  Stream<List<UserEntity>> getSingleOtherUser(String otherUid);
 //Cloud Storage
 
   Future<String> uploadImageToStorage(
@@ -30,7 +34,23 @@ abstract class FirebaseRepository {
 
   Future<void> createPost(PostEntity post);
   Stream<List<PostEntity>> readPosts(PostEntity post);
+  Stream<List<PostEntity>> readSinglePost(String postId);
   Future<void> updatePost(PostEntity post);
   Future<void> deletePost(PostEntity post);
   Future<void> likePost(PostEntity post);
+
+  //comment features
+
+  Future<void> createComment(CommentEntity comment);
+  Stream<List<CommentEntity>> readComments(String PostId);
+  Future<void> updateComment(CommentEntity comment);
+  Future<void> deleteComment(CommentEntity comment);
+  Future<void> likeComment(CommentEntity comment);
+
+  // Replay Features
+  Future<void> createReplay(ReplayEntity reply);
+  Stream<List<ReplayEntity>> readReplays(ReplayEntity reply);
+  Future<void> updateReplay(ReplayEntity reply);
+  Future<void> deleteReplay(ReplayEntity reply);
+  Future<void> likeReplay(ReplayEntity reply);
 }
