@@ -55,6 +55,7 @@ class HomePage extends StatelessWidget {
                       },
                     );
             }
+            return SinglePostCardWidget(post: PostEntity());
 
             return Center(
               child: CircularProgressIndicator(),
