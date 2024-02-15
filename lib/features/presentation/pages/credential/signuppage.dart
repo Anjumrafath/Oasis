@@ -61,19 +61,26 @@ class _SignUpPageState extends State<SignUpPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: backGroundColor,
+        // This widget is typically used to listen to state changes from a Cubit or Bloc and rebuild its UI based on those changes.blocconsumer
         body: BlocConsumer<CredentialCubit, CredentialState>(
+          // This listener function is called whenever there is a state change in the CredentialCubit
+          // It takes the current BuildContext and the updated state (credentialState) as parameters
           listener: (context, credentialState) {
             if (credentialState is CredentialSuccess) {
+              // If the credentialState is CredentialSuccess, it means that the credential validation was successful
               BlocProvider.of<AuthCubit>(context).loggedIn();
             }
             if (credentialState is CredentialFailure) {
               toast("Invalid Email and Password");
             }
           },
+          // This builder function is called whenever there's a state change in the CredentialCubit
           builder: (context, credentialState) {
             if (credentialState is CredentialSuccess) {
               return BlocBuilder<AuthCubit, AuthState>(
                   builder: (context, authState) {
+                // If the authState is Authenticated, it means that the user is logged in
+                // We return the MainScreen widget and pass the user's UID to it
                 if (authState is Authenticated) {
                   return MainScreen(uid: authState.uid);
                 } else {
@@ -97,7 +104,8 @@ class _SignUpPageState extends State<SignUpPage> {
             child: Container(),
             flex: 2,
           ),
-          Center(child: Image.asset("assets/instagramlogo.png", width: 200)),
+          Center(
+              child: Image.asset("assets/logo.png", height: 100, width: 100)),
           sizeVer(15),
           Center(
             child: Stack(
@@ -191,7 +199,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   //  MaterialPageRoute(builder: (context) => SignInPage()),
                   // (route) => false);
                   Navigator.pushNamedAndRemoveUntil(
-                      context, PageConst.signUpPage, (route) => false);
+                      context, PageConst.signInPage, (route) => false);
                 },
                 child: Text("Sign In.",
                     style: TextStyle(

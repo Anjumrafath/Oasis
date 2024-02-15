@@ -1,5 +1,6 @@
 import "package:equatable/equatable.dart";
 
+// state classes used in a typical authentication flow
 abstract class AuthState extends Equatable {
   const AuthState();
 }

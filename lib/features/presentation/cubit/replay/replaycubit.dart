@@ -26,8 +26,11 @@ class ReplayCubit extends Cubit<ReplayState> {
   Future<void> getReplays({required ReplayEntity replay}) async {
     emit(ReplayLoading());
     try {
+      // Calling the readReplaysUseCase to fetch replays
       final streamResponse = readReplaysUseCase.call(replay);
+      // Listening to the stream response
       streamResponse.listen((replays) {
+        // Emitting a state with the received replays when they are available
         emit(ReplayLoaded(replays: replays));
       });
     } on SocketException catch (_) {
@@ -39,6 +42,7 @@ class ReplayCubit extends Cubit<ReplayState> {
 
   Future<void> likeReplay({required ReplayEntity replay}) async {
     try {
+      // Call the likeReplayUseCase to like the replay
       await likeReplayUseCase.call(replay);
     } on SocketException catch (_) {
       emit(ReplayFailure());
@@ -49,6 +53,7 @@ class ReplayCubit extends Cubit<ReplayState> {
 
   Future<void> createReplay({required ReplayEntity replay}) async {
     try {
+      // Call the createReplayUseCase to create the replay
       await createReplayUseCase.call(replay);
     } on SocketException catch (_) {
       emit(ReplayFailure());
@@ -59,6 +64,7 @@ class ReplayCubit extends Cubit<ReplayState> {
 
   Future<void> deleteReplay({required ReplayEntity replay}) async {
     try {
+      // Call the deleteReplayUseCase to delete the replay
       await deleteReplayUseCase.call(replay);
     } on SocketException catch (_) {
       emit(ReplayFailure());
@@ -69,6 +75,7 @@ class ReplayCubit extends Cubit<ReplayState> {
 
   Future<void> updateReplay({required ReplayEntity replay}) async {
     try {
+      // Call the updateReplayUseCase to update the replay
       await updateReplayUseCase.call(replay);
     } on SocketException catch (_) {
       emit(ReplayFailure());

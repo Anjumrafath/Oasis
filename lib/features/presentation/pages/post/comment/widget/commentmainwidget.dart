@@ -197,6 +197,7 @@ class _CommentMainWidgetState extends State<CommentMainWidget> {
     );
   }
 
+//allows to create comment on post
   _createComment(UserEntity currentUser) {
     BlocProvider.of<CommentCubit>(context)
         .createComment(
@@ -281,7 +282,7 @@ class _CommentMainWidgetState extends State<CommentMainWidget> {
                         onTap: () {
                           Navigator.pushNamed(context, PageConst.updatePostPage,
                               arguments: comment);
-//
+
                           // Navigator.push(context, MaterialPageRoute(builder: (context) => UpdatePostPage()));
                         },
                         child: Text(

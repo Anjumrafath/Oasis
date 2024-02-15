@@ -1,6 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:insta_cleanarchitecture/features/domain/entity/reply/replyentity.dart';
 
+//these state classes provide a structured way to represent different states of replays in the application
 abstract class ReplayState extends Equatable {
   const ReplayState();
 }

@@ -27,6 +27,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Returns a MultiBlocProvider to provide multiple blocs to the widget tree
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (_) => di.sl<AuthCubit>()..appStarted(context)),
@@ -37,7 +38,7 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: "InstagramClone",
+        title: "Oasis",
         darkTheme: ThemeData.dark(),
         onGenerateRoute: OnGenerateRoute.route,
         initialRoute: "/",

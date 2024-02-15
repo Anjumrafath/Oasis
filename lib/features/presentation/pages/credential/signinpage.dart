@@ -33,19 +33,26 @@ class _SignInPageState extends State<SignInPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: backGroundColor,
+      // This widget is typically used to listen to state changes from a Cubit or Bloc and rebuild its UI based on those changes.blocconsumer
       body: BlocConsumer<CredentialCubit, CredentialState>(
         listener: (context, credentialState) {
+          // This listener function is called whenever there is a state change in the CredentialCubit
+          // It takes the current BuildContext and the updated state (credentialState) as parameters
           if (credentialState is CredentialSuccess) {
+            // If the credentialState is CredentialSuccess, it means that the credential validation was successful
             BlocProvider.of<AuthCubit>(context).loggedIn();
           }
           if (credentialState is CredentialFailure) {
             toast("Invalid Email and Password");
           }
         },
+        // This builder function is called whenever there's a state change in the CredentialCubit
         builder: (context, credentialState) {
           if (credentialState is CredentialSuccess) {
             return BlocBuilder<AuthCubit, AuthState>(
               builder: (context, authState) {
+                // If the authState is Authenticated, it means that the user is logged in
+                // We return the MainScreen widget and pass the user's UID to it
                 if (authState is Authenticated) {
                   return MainScreen(uid: authState.uid);
                 } else {
@@ -70,7 +77,7 @@ class _SignInPageState extends State<SignInPage> {
             child: Container(),
             flex: 2,
           ),
-          Center(child: Image.asset("assets/instagramlogo.png", width: 200)),
+          Center(child: Image.asset("assets/instagramlogo.png", width: 100)),
           sizeVer(30),
           FormContainerWidget(
             controller: _emailController,
@@ -90,8 +97,10 @@ class _SignInPageState extends State<SignInPage> {
               _signInUser();
             },
           ),
+          //vertical spacing
           sizeVer(10),
-          _isSigningIn == true
+          _isSigningIn ==
+                  true //It's likely a boolean variable that indicates whether a sign-in process is currently in progress.
               ? Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -152,6 +161,7 @@ class _SignInPageState extends State<SignInPage> {
       email: _emailController.text,
       password: _passwordController.text,
     )
+        //Callback function executed when the Future returned by signInUser completes
         .then((value) {
       _clear();
     });

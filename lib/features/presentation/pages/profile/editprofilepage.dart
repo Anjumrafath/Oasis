@@ -38,6 +38,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
 
     super.initState();
   }
+  //Function to select an image from the camera using ImagePicker
 
   bool _isUpdating = false;
   File? _image;

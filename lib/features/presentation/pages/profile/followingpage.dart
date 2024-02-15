@@ -27,6 +27,7 @@ class FollowingPage extends StatelessWidget {
                   : ListView.builder(
                       itemCount: user.following!.length,
                       itemBuilder: (context, index) {
+                        // Stream builder to fetch data of a single user that the current user is following
                         return StreamBuilder<List<UserEntity>>(
                             stream: di
                                 .sl<GetSingleUserUseCase>()

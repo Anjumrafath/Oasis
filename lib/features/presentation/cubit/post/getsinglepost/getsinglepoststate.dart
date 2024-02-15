@@ -1,6 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:insta_cleanarchitecture/features/domain/entity/posts/postentity.dart';
 
+//defines a set of states related to fetching a single post in the application
 abstract class GetSinglePostState extends Equatable {
   const GetSinglePostState();
 }

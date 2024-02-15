@@ -7,7 +7,7 @@ class PostModel extends PostEntity {
   final String? username;
   final String? description;
   final String? postImageUrl;
-  final List<String>? likes;
+  late List? likes;
   final num? totalLikes;
   final num? totalComments;
   final Timestamp? createAt;
@@ -36,7 +36,7 @@ class PostModel extends PostEntity {
           createAt: createAt,
           userProfileUrl: userProfileUrl,
         );
-
+// Factory method to create a postModel object from a DocumentSnapshot.
   factory PostModel.fromSnapshot(DocumentSnapshot snap) {
     var snapshot = snap.data() as Map<String, dynamic>;
     return PostModel(
@@ -52,7 +52,7 @@ class PostModel extends PostEntity {
       userProfileUrl: snapshot['userprofileUrl'],
     );
   }
-
+// Converts the postModel object to a JSON format.
   Map<String, dynamic> toJson() => {
         "postId": postId,
         "createUid": createUid,

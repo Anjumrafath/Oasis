@@ -16,6 +16,7 @@ class UserCubit extends Cubit<UserState> {
     required this.updateUserUseCase,
     required this.getUsersUseCase,
   }) : super(UserInitial());
+  // a method named getUsers inside a Cubit or Bloc class responsible for fetching users .
   Future<void> getUsers({required UserEntity user}) async {
     emit(UserLoading());
     try {
@@ -30,6 +31,7 @@ class UserCubit extends Cubit<UserState> {
 
   Future<void> updateUser({required UserEntity user}) async {
     try {
+      // Calling the updateUserUseCase to update the user
       await updateUserUseCase.call(user);
     } on SocketException catch (_) {
       emit(UserFailure());
@@ -38,6 +40,7 @@ class UserCubit extends Cubit<UserState> {
     }
   }
 
+//a method named followUnFollowUser inside a Cubit or Bloc class responsible for handling user follow/unfollow actions
   Future<void> followUnFollowUser({required UserEntity user}) async {
     try {
       await followUnFollowUseCase.call(user);

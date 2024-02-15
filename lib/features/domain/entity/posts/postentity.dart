@@ -7,7 +7,7 @@ class PostEntity extends Equatable {
   final String? username;
   final String? description;
   final String? postImageUrl;
-  final List<String>? likes;
+  final List? likes;
   final num? totalLikes;
   final num? totalComments;
   final Timestamp? createAt;

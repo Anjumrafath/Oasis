@@ -25,6 +25,8 @@ class FirebaseRemoteDataSourceImpli implements FirebaseRemoteDataSource {
       required this.firebaseAuth,
       required this.firebaseStorage});
 
+  // Function to create or update a user's profile in Firestore with the provided user entity and profile URL.
+
   Future<void> createUserWithImage(UserEntity user, String profileUrl) async {
     final userCollection = firebaseFirestore.collection(FirebaseConst.users);
 
@@ -54,6 +56,7 @@ class FirebaseRemoteDataSourceImpli implements FirebaseRemoteDataSource {
       toast("Some error occur");
     });
   }
+  //Retrieves the current user's UID and accesses the Firestore collection for user profiles.
 
   @override
   Future<void> createUser(UserEntity user) async {
@@ -84,8 +87,11 @@ class FirebaseRemoteDataSourceImpli implements FirebaseRemoteDataSource {
     });
   }
 
+// Asynchronously retrieves the current user's UID from Firebase Authentication.
   @override
   Future<String> getCurrentUid() async => firebaseAuth.currentUser!.uid;
+
+  // Retrieves a stream of user entities matching the provided UID from Firestore.
 
   @override
   Stream<List<UserEntity>> getSingleUser(String uid) {
@@ -97,6 +103,8 @@ class FirebaseRemoteDataSourceImpli implements FirebaseRemoteDataSource {
         querySnapshot.docs.map((e) => UserModel.fromSnapshot(e)).toList());
   }
 
+  // Retrieves a stream of user entities from Firestore.
+
   @override
   Stream<List<UserEntity>> getUsers(UserEntity user) {
     final userCollection = firebaseFirestore.collection(FirebaseConst.users);
@@ -105,9 +113,11 @@ class FirebaseRemoteDataSourceImpli implements FirebaseRemoteDataSource {
         querySnapshot.docs.map((e) => UserModel.fromSnapshot(e)).toList());
   }
 
+// Asynchronously checks if a user is signed in by verifying if the current user's UID is not null.
   @override
   Future<bool> isSignIn() async => firebaseAuth.currentUser?.uid != null;
 
+// Asynchronously attempts to sign in a user using their email and password.
   @override
   Future<void> signInUser(UserEntity user) async {
     try {
@@ -126,10 +136,13 @@ class FirebaseRemoteDataSourceImpli implements FirebaseRemoteDataSource {
     }
   }
 
+// Asynchronously signs out the current user from Firebase Authentication.
   @override
   Future<void> signOut() async {
     await firebaseAuth.signOut();
   }
+
+// Asynchronously signs up a new user with the provided email and password.
 
   @override
   Future<void> signUpUser(UserEntity user) async {
@@ -159,6 +172,7 @@ class FirebaseRemoteDataSourceImpli implements FirebaseRemoteDataSource {
     }
   }
 
+// Asynchronously updates a user's profile information in Firestore with the provided user entity.
   @override
   Future<void> updateUser(UserEntity user) async {
     final userCollection = firebaseFirestore.collection(FirebaseConst.users);
@@ -185,6 +199,7 @@ class FirebaseRemoteDataSourceImpli implements FirebaseRemoteDataSource {
 
     userCollection.doc(user.uid).update(userInformation);
   }
+  // Asynchronously uploads an image file to Firebase Storage.
 
   @override
   Future<String> uploadImageToStorage(
@@ -203,6 +218,7 @@ class FirebaseRemoteDataSourceImpli implements FirebaseRemoteDataSource {
     return await imageUrl;
   }
 
+// Asynchronously creates a new post in Firestore with the provided post entity.
   @override
   Future<void> createPost(PostEntity post) async {
     final postCollection = firebaseFirestore.collection(FirebaseConst.posts);
@@ -243,6 +259,7 @@ class FirebaseRemoteDataSourceImpli implements FirebaseRemoteDataSource {
     }
   }
 
+// Asynchronously deletes a post from Firestore with the provided post entity.
   @override
   Future<void> deletePost(PostEntity post) async {
     final postCollection = firebaseFirestore.collection(FirebaseConst.posts);
@@ -265,6 +282,7 @@ class FirebaseRemoteDataSourceImpli implements FirebaseRemoteDataSource {
       print("some error occured $e");
     }
   }
+  // Asynchronously manages the liking/unliking of a post in Firestore.
 
   @override
   Future<void> likePost(PostEntity post) async {
@@ -288,6 +306,7 @@ class FirebaseRemoteDataSourceImpli implements FirebaseRemoteDataSource {
     }
   }
 
+// Retrieves a stream of post entities from Firestore, ordered by creation timestamp in descending order.
   @override
   Stream<List<PostEntity>> readPosts(PostEntity post) {
     final postCollection =
@@ -298,6 +317,7 @@ class FirebaseRemoteDataSourceImpli implements FirebaseRemoteDataSource {
     return postCollection.snapshots().map((querySnapshot) =>
         querySnapshot.docs.map((e) => PostModel.fromSnapshot(e)).toList());
   }
+  // Retrieves a stream of post entities from Firestore for a single post with the specified post ID.
 
   @override
   Stream<List<PostEntity>> readSinglePost(String postId) {
@@ -312,6 +332,7 @@ class FirebaseRemoteDataSourceImpli implements FirebaseRemoteDataSource {
         querySnapshot.docs.map((e) => PostModel.fromSnapshot(e)).toList());
   }
 
+// Asynchronously updates a post's information in Firestore with the provided post entity.
   @override
   Future<void> updatePost(PostEntity post) async {
     final postCollection = firebaseFirestore.collection(FirebaseConst.posts);
@@ -323,6 +344,8 @@ class FirebaseRemoteDataSourceImpli implements FirebaseRemoteDataSource {
       postInfo['postImageUrl'] = post.postImageUrl;
     postCollection.doc(post.postId).update(postInfo);
   }
+
+  // Asynchronously creates a new comment in Firestore with the provided comment entity.
 
   @override
   Future<void> createComment(CommentEntity comment) async {
@@ -395,6 +418,7 @@ class FirebaseRemoteDataSourceImpli implements FirebaseRemoteDataSource {
     }
   }
 
+// Asynchronously deletes a comment from Firestore with the provided comment entity.
   @override
   Future<void> likeComment(CommentEntity comment) async {
     final commentCollection = firebaseFirestore
@@ -419,6 +443,7 @@ class FirebaseRemoteDataSourceImpli implements FirebaseRemoteDataSource {
     }
   }
 
+// Retrieves a stream of comment entities from Firestore for a specified post ID, ordered by creation timestamp in descending order.
   @override
   Stream<List<CommentEntity>> readComments(String postId) {
     final commentCollection = firebaseFirestore
@@ -430,6 +455,7 @@ class FirebaseRemoteDataSourceImpli implements FirebaseRemoteDataSource {
         querySnapshot.docs.map((e) => CommentModel.fromSnapshot(e)).toList());
   }
 
+// Asynchronously updates a comment's information in Firestore with the provided comment entity.
   @override
   Future<void> updateComment(CommentEntity comment) async {
     final commentCollection = firebaseFirestore
@@ -445,6 +471,7 @@ class FirebaseRemoteDataSourceImpli implements FirebaseRemoteDataSource {
     commentCollection.doc(comment.commentId).update(commentInfo);
   }
 
+// Asynchronously creates a new replay (reply) in Firestore with the provided replay entity.
   @override
   Future<void> createReplay(ReplayEntity replay) async {
     final replayCollection = firebaseFirestore
@@ -492,6 +519,7 @@ class FirebaseRemoteDataSourceImpli implements FirebaseRemoteDataSource {
       print("some error occured $e");
     }
   }
+// Asynchronously deletes a replay from Firestore with the provided replay entity.
 
   @override
   Future<void> deleteReplay(ReplayEntity replay) async {
@@ -523,6 +551,7 @@ class FirebaseRemoteDataSourceImpli implements FirebaseRemoteDataSource {
     }
   }
 
+// Asynchronously manages the liking/unliking of a replay in Firestore.
   @override
   Future<void> likeReplay(ReplayEntity replay) async {
     final replayCollection = firebaseFirestore
@@ -549,6 +578,7 @@ class FirebaseRemoteDataSourceImpli implements FirebaseRemoteDataSource {
       }
     }
   }
+  // Retrieves a stream of replay entities from Firestore for a specified comment under a post.
 
   @override
   Stream<List<ReplayEntity>> readReplays(ReplayEntity replay) {
@@ -562,6 +592,7 @@ class FirebaseRemoteDataSourceImpli implements FirebaseRemoteDataSource {
         querySnapshot.docs.map((e) => ReplayModel.fromSnapshot(e)).toList());
   }
 
+// Asynchronously updates a replay's information in Firestore with the provided replay entity.
   @override
   Future<void> updateReplay(ReplayEntity replay) async {
     final replayCollection = firebaseFirestore
@@ -579,6 +610,7 @@ class FirebaseRemoteDataSourceImpli implements FirebaseRemoteDataSource {
     replayCollection.doc(replay.replayId).update(replayInfo);
   }
 
+// Asynchronously manages following/unfollowing a user in Firestore.
   @override
   Future<void> followUnFollowUser(UserEntity user) async {
     final userCollection = firebaseFirestore.collection(FirebaseConst.users);
@@ -660,6 +692,7 @@ class FirebaseRemoteDataSourceImpli implements FirebaseRemoteDataSource {
     }
   }
 
+// Retrieves a stream of user entities from Firestore for a single user with the specified UID.
   @override
   Stream<List<UserEntity>> getSingleOtherUser(String otherUid) {
     final userCollection = firebaseFirestore

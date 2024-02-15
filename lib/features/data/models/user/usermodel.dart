@@ -45,6 +45,8 @@ class UserModel extends UserEntity {
           totalPosts: totalPosts,
         );
 
+  // Factory method to create a userModel object from a DocumentSnapshot.
+
   factory UserModel.fromSnapshot(DocumentSnapshot snap) {
     var snapshot = snap.data() as Map<String, dynamic>;
     return UserModel(
@@ -62,7 +64,7 @@ class UserModel extends UserEntity {
       following: List.from(snap.get("following")),
     );
   }
-
+// Converts the userModel object to a JSON format.
   Map<String, dynamic> toJson() => {
         "uid": uid,
         "email": email,

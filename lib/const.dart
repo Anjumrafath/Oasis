@@ -14,6 +14,7 @@ Widget sizeVer(double height) {
 Widget sizeHor(double width) {
   return SizedBox(width: width);
 }
+// Constants for page routes and Firebase collections
 
 class PageConst {
   static const String editProfilePage = "editProfilePage";
@@ -36,6 +37,7 @@ class FirebaseConst {
   static const String replay = "replay";
 }
 
+// includes a function to display toast messages
 void toast(String message) {
   Fluttertoast.showToast(
       msg: message,

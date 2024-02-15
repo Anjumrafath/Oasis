@@ -22,12 +22,16 @@ class CommentCubit extends Cubit<CommentState> {
       required this.deleteCommentUseCase,
       required this.createCommentUseCase})
       : super(CommentInitial());
+  // Method to fetch comments for a given post ID.
 
   Future<void> getComments({required String postId}) async {
     emit(CommentLoading());
     try {
+      // Call the readCommentsUseCase to get a stream of comments for the given post ID.
       final streamResponse = readCommentsUseCase.call(postId);
+      // Listen to the stream response for incoming comments.
       streamResponse.listen((comments) {
+        // Emit a CommentLoaded state with the fetched comments.
         emit(CommentLoaded(comments: comments));
       });
     } on SocketException catch (_) {
@@ -37,16 +41,19 @@ class CommentCubit extends Cubit<CommentState> {
     }
   }
 
+// Method to like a comment.
   Future<void> likeComment({required CommentEntity comment}) async {
     try {
       await likeCommentUseCase.call(comment);
     } on SocketException catch (_) {
+      // If there's a socket exception (network error), emit a CommentFailure state.
       emit(CommentFailure());
     } catch (_) {
       emit(CommentFailure());
     }
   }
 
+// Method to delete a comment.
   Future<void> deleteComment({required CommentEntity comment}) async {
     try {
       await deleteCommentUseCase.call(comment);
@@ -56,6 +63,7 @@ class CommentCubit extends Cubit<CommentState> {
       emit(CommentFailure());
     }
   }
+  // Method to create a new comment.
 
   Future<void> createComment({required CommentEntity comment}) async {
     try {
@@ -67,6 +75,7 @@ class CommentCubit extends Cubit<CommentState> {
     }
   }
 
+// Method to update a comment.
   Future<void> updateComment({required CommentEntity comment}) async {
     try {
       await updateCommentUseCase.call(comment);

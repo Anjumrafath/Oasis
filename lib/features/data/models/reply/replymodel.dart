@@ -9,7 +9,7 @@ class ReplayModel extends ReplayEntity {
   final String? description;
   final String? username;
   final String? userProfileUrl;
-  final List<String>? likes;
+  final List? likes;
   final Timestamp? createAt;
 
   ReplayModel({
@@ -32,10 +32,11 @@ class ReplayModel extends ReplayEntity {
             likes: likes,
             createAt: createAt,
             replayId: replayId);
+  // Factory method to create a replayModel object from a DocumentSnapshot.
 
   factory ReplayModel.fromSnapshot(DocumentSnapshot snap) {
     var snapshot = snap.data() as Map<String, dynamic>;
-
+// Converts the replayModel object to a JSON format.
     return ReplayModel(
       postId: snapshot['postId'],
       creatorUid: snapshot['creatorUid'],

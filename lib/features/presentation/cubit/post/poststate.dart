@@ -1,6 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:insta_cleanarchitecture/features/domain/entity/posts/postentity.dart';
 
+// defines a set of state classes for managing the state of posts
 abstract class PostState extends Equatable {
   const PostState();
 }

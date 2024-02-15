@@ -1,6 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:insta_cleanarchitecture/features/domain/entity/user/userentity.dart';
 
+//code defines a set of state classes for managing the state of a single other user
 abstract class GetSingleOtherUserState extends Equatable {
   const GetSingleOtherUserState();
 }

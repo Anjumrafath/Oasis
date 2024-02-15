@@ -1,6 +1,8 @@
 import 'package:equatable/equatable.dart';
 import 'package:insta_cleanarchitecture/features/domain/entity/comment/commententity.dart';
 
+//CommentState class and its subclasses are used to represent the different states of comments in application
+
 abstract class CommentState extends Equatable {
   const CommentState();
 }

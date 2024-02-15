@@ -15,9 +15,10 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       backgroundColor: backGroundColor,
       appBar: AppBar(
+        backgroundColor: backGroundColor,
         title: Image.asset(
           "assets/logo.png",
-          width: 200,
+          width: 150,
           height: 150,
         ),
         actions: [
@@ -29,6 +30,8 @@ class HomePage extends StatelessWidget {
           )
         ],
       ),
+
+      // The cubit is initialized with a PostEntity and retrieves posts upon creation.
       body: BlocProvider<PostCubit>(
         create: (context) => di.sl<PostCubit>()..getPosts(post: PostEntity()),
         child: BlocBuilder<PostCubit, PostState>(
@@ -41,6 +44,8 @@ class HomePage extends StatelessWidget {
             if (postState is PostFailure) {
               toast("Some Failure occured while creating the post");
             }
+            //   display either a widget indicating no posts if the list is empty,
+// or render a ListView with post items, each wrapped in a BlocProvider
             if (postState is PostLoaded) {
               return postState.posts.isEmpty
                   ? _noPostsYetWidget()
@@ -55,7 +60,6 @@ class HomePage extends StatelessWidget {
                       },
                     );
             }
-            return SinglePostCardWidget(post: PostEntity());
 
             return Center(
               child: CircularProgressIndicator(),

@@ -16,6 +16,7 @@ class AuthCubit extends Cubit<AuthState> {
       required this.isSignInUseCase,
       required this.getCurrentUidUseCase})
       : super(AuthInitial());
+  // Method called when the app is started.
   Future<void> appStarted(BuildContext context) async {
     try {
       bool isSignIn = await isSignInUseCase.call();
@@ -30,6 +31,7 @@ class AuthCubit extends Cubit<AuthState> {
     }
   }
 
+// Method called when the user is logged in.
   Future<void> loggedIn() async {
     try {
       final uid = await getCurrentUidUseCase.call();
@@ -39,6 +41,7 @@ class AuthCubit extends Cubit<AuthState> {
     }
   }
 
+// Method called when the user is logged out.
   Future<void> loggedOut() async {
     try {
       await signOutUseCase.call();

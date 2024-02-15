@@ -9,7 +9,7 @@ class CommentEntity extends Equatable {
   final String? username;
   final String? userProfileUrl;
   final Timestamp? createAt;
-  final List<String>? likes;
+  final List? likes;
   final num? totalReply;
 
   CommentEntity({

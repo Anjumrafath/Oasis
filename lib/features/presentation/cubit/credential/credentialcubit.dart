@@ -15,6 +15,8 @@ class CredentialCubit extends Cubit<CredentialState> {
       {required this.signInUserUseCase, required this.signUpUseCase})
       : super(CredentialInitial());
 
+// Method to sign in a user with provided email and password.
+
   Future<void> signInUser(
       {required String email, required String password}) async {
     emit(CredentialLoading());
@@ -29,6 +31,7 @@ class CredentialCubit extends Cubit<CredentialState> {
     }
   }
 
+// Method to sign up a new user.
   Future<void> signUpUser({required UserEntity user}) async {
     emit(CredentialLoading());
     try {

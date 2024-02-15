@@ -25,6 +25,7 @@ class _SinglePostCardWidgetState extends State<SinglePostCardWidget> {
 
   @override
   void initState() {
+    // Retrieve an instance of GetCurrentUidUseCase using dependency injection (DI),
     di.sl<GetCurrentUidUseCase>().call().then((value) {
       setState(() {
         _currentUid = value;
@@ -284,6 +285,7 @@ class _SinglePostCardWidgetState extends State<SinglePostCardWidget> {
         });
   }
 
+//BlocProvider.of<PostCubit>(context) retrieves the instance of the PostCubit from the nearest ancestor BlocProvider widget in the widget tree.
   _deletePost() {
     BlocProvider.of<PostCubit>(context)
         .deletePost(post: PostEntity(postId: widget.post.postId));

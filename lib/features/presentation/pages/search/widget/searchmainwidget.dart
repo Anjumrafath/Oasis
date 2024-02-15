@@ -21,6 +21,8 @@ class SearchMainWidget extends StatefulWidget {
 class _SearchMainWidgetState extends State<SearchMainWidget> {
   TextEditingController _searchController = TextEditingController();
 
+// Using BlocProvider to access the UserCubit and retrieve users data
+// Using BlocProvider to access the PostCubit and retrieve posts data
   @override
   void initState() {
     BlocProvider.of<UserCubit>(context).getUsers(user: UserEntity());
@@ -43,6 +45,7 @@ class _SearchMainWidgetState extends State<SearchMainWidget> {
     return SafeArea(
       child: Scaffold(
         backgroundColor: backGroundColor,
+        // this below section using BlocBuilder to build UI based on UserCubit state
         body: BlocBuilder<UserCubit, UserState>(
           builder: (context, userState) {
             if (userState is UserLoaded) {

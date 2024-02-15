@@ -9,7 +9,7 @@ class ReplayEntity extends Equatable {
   final String? description;
   final String? username;
   final String? userProfileUrl;
-  final List<String>? likes;
+  final List? likes;
   final Timestamp? createAt;
 
   ReplayEntity({

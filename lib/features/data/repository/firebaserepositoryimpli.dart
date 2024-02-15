@@ -8,47 +8,62 @@ import '../../domain/entity/user/userentity.dart';
 import '../../domain/repository/firebaserepository.dart';
 import '../datasources/remotedatasource/remotedatasource.dart';
 
+// Implementation of the FirebaseRepository interface.
+
 class FirebaseRepositoryImpli implements FirebaseRepository {
   final FirebaseRemoteDataSource remoteDataSource;
 
   FirebaseRepositoryImpli({required this.remoteDataSource});
   @override
+  // Overrides the createUser method from the FirebaseRepository interface
+
   Future<void> createUser(UserEntity user) async =>
       remoteDataSource.createUser(user);
-
+  // Overrides the getcurrentuid method from the FirebaseRepository interface
   @override
   Future<String> getCurrentUid() async => remoteDataSource.getCurrentUid();
-
+  // Overrides the getsingleuser method from the FirebaseRepository interface
   @override
   Stream<List<UserEntity>> getSingleUser(String uid) =>
       remoteDataSource.getSingleUser(uid);
+
+  // Overrides the getusers method from the FirebaseRepository interface
 
   @override
   Stream<List<UserEntity>> getUsers(UserEntity user) =>
       remoteDataSource.getUsers(user);
 
+  // Overrides the issignin method from the FirebaseRepository interface
+
   @override
   Future<bool> isSignIn() async => remoteDataSource.isSignIn();
+  // Overrides the signinuser method from the FirebaseRepository interface
 
   @override
   Future<void> signInUser(UserEntity user) async =>
       remoteDataSource.signInUser(user);
+  // Overrides the signout method from the FirebaseRepository interface
 
   @override
   Future<void> signOut() async => remoteDataSource.signOut();
+  // Overrides the signupUser method from the FirebaseRepository interface
 
   @override
   Future<void> signUpUser(UserEntity user) async =>
       remoteDataSource.signUpUser(user);
+  // Overrides the updateUser method from the FirebaseRepository interface
 
   @override
   Future<void> updateUser(UserEntity user) async =>
       remoteDataSource.updateUser(user);
 
+  // Overrides the uploadimagetostorage method from the FirebaseRepository interface
+
   @override
   Future<String> uploadImageToStorage(
           File? file, bool isPost, String childName) async =>
       remoteDataSource.uploadImageToStorage(file, isPost, childName);
+  // Overrides the createUserwithimage method from the FirebaseRepository interface
   @override
   Future<void> createUserWithImage(UserEntity user, String profileUrl) async {
     remoteDataSource.createUserWithImage(user, profileUrl);

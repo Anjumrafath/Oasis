@@ -9,7 +9,7 @@ class CommentModel extends CommentEntity {
   final String? username;
   final String? userProfileUrl;
   final Timestamp? createAt;
-  final List<String>? likes;
+  final List? likes;
   final num? totalReply;
 
   CommentModel({
@@ -33,7 +33,7 @@ class CommentModel extends CommentEntity {
           commentId: commentId,
           totalReply: totalReply,
         );
-
+// Factory method to create a CommentModel object from a DocumentSnapshot.
   factory CommentModel.fromSnapshot(DocumentSnapshot snap) {
     var snapshot = snap.data() as Map<String, dynamic>;
 
@@ -49,7 +49,7 @@ class CommentModel extends CommentEntity {
       likes: List.from(snap.get("likes")),
     );
   }
-
+// Converts the CommentModel object to a JSON format.
   Map<String, dynamic> toJson() => {
         "creatorUid": creatorUid,
         "description": description,
