@@ -27,8 +27,6 @@ class CommentMainWidget extends StatefulWidget {
 }
 
 class _CommentMainWidgetState extends State<CommentMainWidget> {
-  TextEditingController _descriptionController = TextEditingController();
-
   @override
   void initState() {
     BlocProvider.of<GetSingleUserCubit>(context)
@@ -39,6 +37,8 @@ class _CommentMainWidgetState extends State<CommentMainWidget> {
         .getComments(postId: widget.appEntity.postId!);
     super.initState();
   }
+
+  TextEditingController _descriptionController = TextEditingController();
 
   @override
   void dispose() {
@@ -181,11 +181,14 @@ class _CommentMainWidgetState extends State<CommentMainWidget> {
               controller: _descriptionController,
               style: TextStyle(color: primaryColor),
               decoration: InputDecoration(
+                  border: InputBorder.none,
                   hintText: "Post your comment...",
                   hintStyle: TextStyle(color: Colors.black)),
             )),
             GestureDetector(
-              onTap: _createComment(currentUser),
+              onTap: () {
+                _createComment(currentUser);
+              },
               child: Text(
                 "post",
                 style: TextStyle(fontSize: 15, color: blueColor),

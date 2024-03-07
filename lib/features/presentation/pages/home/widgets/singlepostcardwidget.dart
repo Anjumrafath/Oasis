@@ -5,8 +5,6 @@ import 'package:insta_cleanarchitecture/features/domain/entity/appentity.dart';
 import 'package:insta_cleanarchitecture/features/domain/entity/posts/postentity.dart';
 import 'package:insta_cleanarchitecture/features/domain/usecases/user/getcurrentuidusecase.dart';
 import 'package:insta_cleanarchitecture/features/presentation/cubit/post/postcubit.dart';
-import 'package:insta_cleanarchitecture/features/presentation/pages/post/comment/commentpage.dart';
-import 'package:insta_cleanarchitecture/features/presentation/pages/post/updatepostpage.dart';
 import 'package:insta_cleanarchitecture/features/presentation/pages/post/widget/likeanimationwidget.dart';
 import 'package:insta_cleanarchitecture/profilewidget.dart';
 import 'package:intl/intl.dart';
@@ -47,7 +45,8 @@ class _SinglePostCardWidgetState extends State<SinglePostCardWidget> {
             children: [
               GestureDetector(
                 onTap: () {
-                  //  Navigator.pushNamed(context, PageConst.singleUserProfilePage, arguments: widget.post.creatorUid);
+                  Navigator.pushNamed(context, PageConst.singleUserProfilePage,
+                      arguments: widget.post.creatorUid);
                 },
                 child: Row(
                   children: [
@@ -69,7 +68,7 @@ class _SinglePostCardWidgetState extends State<SinglePostCardWidget> {
                   ],
                 ),
               ),
-              widget.post.createUid == _currentUid
+              widget.post.creatorUid == _currentUid
                   ? GestureDetector(
                       onTap: () {
                         _openBottomModalSheet(context, widget.post);
@@ -127,26 +126,22 @@ class _SinglePostCardWidgetState extends State<SinglePostCardWidget> {
               Row(
                 children: [
                   GestureDetector(
-                    onTap: _likePost,
-                    child: Icon(
-                      widget.post.likes!.contains(_currentUid)
-                          ? Icons.favorite
-                          : Icons.favorite_outline,
-                      color: widget.post.likes!.contains(_currentUid)
-                          ? Colors.red
-                          : primaryColor,
-                    ),
-                  ),
+                      onTap: _likePost,
+                      child: Icon(
+                        widget.post.likes!.contains(_currentUid)
+                            ? Icons.favorite
+                            : Icons.favorite_outline,
+                        color: widget.post.likes!.contains(_currentUid)
+                            ? Colors.red
+                            : primaryColor,
+                      )),
                   sizeHor(10),
                   GestureDetector(
                       onTap: () {
                         Navigator.pushNamed(context, PageConst.commentPage,
                             arguments: AppEntity(
                                 uid: _currentUid, postId: widget.post.postId));
-                        //Navigator.push(
-                        // context,
-                        // MaterialPageRoute(
-                        //   builder: (context) => CommentPage()));
+                        //Navigator.push(context, MaterialPageRoute(builder: (context) => CommentPage()));
                       },
                       child: Icon(
                         Icons.add_box_rounded,
@@ -265,7 +260,7 @@ class _SinglePostCardWidgetState extends State<SinglePostCardWidget> {
                           Navigator.pushNamed(context, PageConst.updatePostPage,
                               arguments: post);
 
-                          //  Navigator.push(context, MaterialPageRoute(builder: (context) => UpdatePostPage()));
+                          // Navigator.push(context, MaterialPageRoute(builder: (context) => UpdatePostPage()));
                         },
                         child: Text(
                           "Update Post",

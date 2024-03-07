@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:insta_cleanarchitecture/features/domain/entity/posts/postentity.dart';
 
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';

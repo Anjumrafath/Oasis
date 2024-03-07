@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:insta_cleanarchitecture/const.dart';
 import 'package:insta_cleanarchitecture/features/presentation/cubit/credential/credentialcubit.dart';
 import 'package:insta_cleanarchitecture/features/presentation/cubit/credential/credentialstate.dart';
-import 'package:insta_cleanarchitecture/features/presentation/pages/credential/signuppage.dart';
+
 import 'package:insta_cleanarchitecture/features/presentation/pages/mainscreen/mainscreen.dart';
 import 'package:insta_cleanarchitecture/features/presentation/widgets/buttoncontainerwidget.dart';
 import 'package:insta_cleanarchitecture/features/presentation/widgets/formcontainerwidget.dart';
@@ -158,20 +158,18 @@ class _SignInPageState extends State<SignInPage> {
     });
     BlocProvider.of<CredentialCubit>(context)
         .signInUser(
-      email: _emailController.text,
-      password: _passwordController.text,
-    )
+          email: _emailController.text,
+          password: _passwordController.text,
+        )
         //Callback function executed when the Future returned by signInUser completes
-        .then((value) {
-      _clear();
-    });
+        .then((value) => _clear());
   }
 
   _clear() {
     setState(() {
       _emailController.clear();
       _passwordController.clear();
-      _isSigningIn = true;
+      _isSigningIn = false;
     });
   }
 }

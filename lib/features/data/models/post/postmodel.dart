@@ -3,7 +3,7 @@ import 'package:insta_cleanarchitecture/features/domain/entity/posts/postentity.
 
 class PostModel extends PostEntity {
   final String? postId;
-  final String? createUid;
+  final String? creatorUid;
   final String? username;
   final String? description;
   final String? postImageUrl;
@@ -15,7 +15,7 @@ class PostModel extends PostEntity {
 
   PostModel(
       {this.postId,
-      this.createUid,
+      this.creatorUid,
       this.username,
       this.description,
       this.postImageUrl,
@@ -26,7 +26,7 @@ class PostModel extends PostEntity {
       this.userProfileUrl})
       : super(
           postId: postId,
-          createUid: createUid,
+          creatorUid: creatorUid,
           username: username,
           description: description,
           postImageUrl: postImageUrl,
@@ -41,7 +41,7 @@ class PostModel extends PostEntity {
     var snapshot = snap.data() as Map<String, dynamic>;
     return PostModel(
       postId: snapshot['postId'],
-      createUid: snapshot['createUid'],
+      creatorUid: snapshot['creatorUid'],
       username: snapshot['username'],
       description: snapshot['description'],
       postImageUrl: snapshot['postImageUrl'],
@@ -55,7 +55,7 @@ class PostModel extends PostEntity {
 // Converts the postModel object to a JSON format.
   Map<String, dynamic> toJson() => {
         "postId": postId,
-        "createUid": createUid,
+        "creatorUid": creatorUid,
         "username": username,
         "description": description,
         "postImageUrl": postImageUrl,

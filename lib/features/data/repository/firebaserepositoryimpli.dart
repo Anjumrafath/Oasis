@@ -64,10 +64,10 @@ class FirebaseRepositoryImpli implements FirebaseRepository {
           File? file, bool isPost, String childName) async =>
       remoteDataSource.uploadImageToStorage(file, isPost, childName);
   // Overrides the createUserwithimage method from the FirebaseRepository interface
-  @override
-  Future<void> createUserWithImage(UserEntity user, String profileUrl) async {
-    remoteDataSource.createUserWithImage(user, profileUrl);
-  }
+//  @override
+//  Future<void> createUserWithImage(UserEntity user, String profileUrl) async {
+  //   remoteDataSource.createUserWithImage(user, profileUrl);
+  // }
 
   @override
   Future<void> createPost(PostEntity post) async =>

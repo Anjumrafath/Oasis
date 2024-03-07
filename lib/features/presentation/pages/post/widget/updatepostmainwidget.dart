@@ -164,7 +164,7 @@ class _UpdatePostMainWidget extends State<UpdatePostMainWidget> {
     BlocProvider.of<PostCubit>(context)
         .updatePost(
           post: PostEntity(
-              createUid: widget.post.createUid,
+              creatorUid: widget.post.creatorUid,
               postId: widget.post.postId,
               postImageUrl: image,
               description: _descriptionController!.text),

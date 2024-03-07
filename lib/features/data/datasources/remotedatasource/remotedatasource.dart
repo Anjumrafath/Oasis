@@ -24,7 +24,7 @@ abstract class FirebaseRemoteDataSource {
 //cloud storage
   Future<String> uploadImageToStorage(
       File? file, bool isPost, String childName);
-  Future<void> createUserWithImage(UserEntity user, String profileUrl);
+  // Future<void> createUserWithImage(UserEntity user, String profileUrl);
 
 //posts features
 

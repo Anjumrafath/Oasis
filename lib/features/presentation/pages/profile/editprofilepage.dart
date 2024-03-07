@@ -159,7 +159,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
   }
 
   _updateUserProfile(String profileUrl) {
-    setState(() => _isUpdating = true);
+    //setState(() => _isUpdating = true);
     BlocProvider.of<UserCubit>(context)
         .updateUser(
           user: UserEntity(

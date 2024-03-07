@@ -28,7 +28,7 @@ abstract class FirebaseRepository {
     bool isPost,
     String childName,
   );
-  Future<void> createUserWithImage(UserEntity user, String profileUrl);
+  // Future<void> createUserWithImage(UserEntity user, String profileUrl);
 
 //posts features
 

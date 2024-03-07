@@ -6,7 +6,7 @@ import 'package:insta_cleanarchitecture/const.dart';
 import 'package:insta_cleanarchitecture/features/presentation/cubit/auth/authstate.dart';
 import 'package:insta_cleanarchitecture/features/presentation/cubit/credential/credentialcubit.dart';
 import 'package:insta_cleanarchitecture/features/presentation/cubit/credential/credentialstate.dart';
-import 'package:insta_cleanarchitecture/features/presentation/pages/credential/signinpage.dart';
+
 import 'package:insta_cleanarchitecture/features/presentation/pages/mainscreen/mainscreen.dart';
 import 'package:insta_cleanarchitecture/features/presentation/widgets/formcontainerwidget.dart';
 import 'package:insta_cleanarchitecture/profilewidget.dart';
@@ -29,6 +29,7 @@ class _SignUpPageState extends State<SignUpPage> {
   TextEditingController _passwordController = TextEditingController();
   TextEditingController _bioController = TextEditingController();
   bool _isSigningUp = false;
+
   @override
   void dispose() {
     _emailController.dispose();
@@ -212,7 +213,7 @@ class _SignUpPageState extends State<SignUpPage> {
     );
   }
 
-  void _signUpUser() {
+  Future<void> _signUpUser() async {
     setState(() {
       _isSigningUp = true;
     });

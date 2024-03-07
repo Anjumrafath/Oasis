@@ -151,7 +151,7 @@ class _ProfileMainWidgetState extends State<ProfileMainWidget> {
                     if (postState is PostLoaded) {
                       final posts = postState.posts
                           .where((post) =>
-                              post.createUid == widget.currentUser.uid)
+                              post.creatorUid == widget.currentUser.uid)
                           .toList();
                       return GridView.builder(
                           itemCount: posts.length,
@@ -229,7 +229,7 @@ class _ProfileMainWidgetState extends State<ProfileMainWidget> {
                           Navigator.pushNamed(
                               context, PageConst.editProfilePage,
                               arguments: widget.currentUser);
-                          //  Navigator.push(context, MaterialPageRoute(builder: (context) => EditProfilePage()));
+                          // Navigator.push(context, MaterialPageRoute(builder: (context) => EditProfilePage()));
                         },
                         child: Text(
                           "Edit Profile",

@@ -55,7 +55,7 @@ class _UploadPostMainWidgetState extends State<UploadPostMainWidget> {
   @override
   Widget build(BuildContext context) {
     return _image == null
-        ? _UploadPostWidget()
+        ? _uploadPostWidget()
         : Scaffold(
             backgroundColor: backGroundColor,
             appBar: AppBar(
@@ -82,7 +82,7 @@ class _UploadPostMainWidgetState extends State<UploadPostMainWidget> {
                     child: ClipRRect(
                         borderRadius: BorderRadius.circular(40),
                         child: profileWidget(
-                            imageUrl: "${widget.currentUser.username}")),
+                            imageUrl: "${widget.currentUser.profileUrl}")),
                   ),
                   sizeVer(10),
                   Text(
@@ -137,15 +137,15 @@ class _UploadPostMainWidgetState extends State<UploadPostMainWidget> {
         .createPost(
             post: PostEntity(
           postId: Uuid().v1(),
-          createUid: widget.currentUser.uid,
+          creatorUid: widget.currentUser.uid,
           username: widget.currentUser.username,
           description: _descriptionController.text,
-          postImageUrl: widget.currentUser.profileUrl,
+          postImageUrl: image,
           likes: [],
           totalLikes: 0,
           totalComments: 0,
           createAt: Timestamp.now(),
-          userProfileUrl: image,
+          userProfileUrl: widget.currentUser.profileUrl,
         ))
         .then((value) => _clear());
   }
@@ -158,7 +158,7 @@ class _UploadPostMainWidgetState extends State<UploadPostMainWidget> {
     });
   }
 
-  _UploadPostWidget() {
+  _uploadPostWidget() {
     return Scaffold(
       backgroundColor: backGroundColor,
       body: Center(

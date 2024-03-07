@@ -3,7 +3,7 @@ import 'package:equatable/equatable.dart';
 
 class PostEntity extends Equatable {
   final String? postId;
-  final String? createUid;
+  final String? creatorUid;
   final String? username;
   final String? description;
   final String? postImageUrl;
@@ -15,7 +15,7 @@ class PostEntity extends Equatable {
 
   PostEntity(
       {this.postId,
-      this.createUid,
+      this.creatorUid,
       this.username,
       this.description,
       this.postImageUrl,
@@ -28,7 +28,7 @@ class PostEntity extends Equatable {
   @override
   List<Object?> get props => [
         postId,
-        createUid,
+        creatorUid,
         username,
         description,
         postImageUrl,

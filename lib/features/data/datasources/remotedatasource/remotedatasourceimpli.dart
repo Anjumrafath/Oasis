@@ -231,7 +231,7 @@ class FirebaseRemoteDataSourceImpli implements FirebaseRemoteDataSource {
       postId: post.postId,
       likes: [],
       description: post.description,
-      createUid: post.createUid,
+      creatorUid: post.creatorUid,
       createAt: post.createAt,
     ).toJson();
     try {
@@ -241,7 +241,7 @@ class FirebaseRemoteDataSourceImpli implements FirebaseRemoteDataSource {
         postCollection.doc(post.postId).set(newPost).then((value) {
           final userCollection = firebaseFirestore
               .collection(FirebaseConst.users)
-              .doc(post.createUid);
+              .doc(post.creatorUid);
 
           userCollection.get().then((value) {
             if (value.exists) {
@@ -268,7 +268,7 @@ class FirebaseRemoteDataSourceImpli implements FirebaseRemoteDataSource {
       postCollection.doc(post.postId).delete().then((value) {
         final userCollection = firebaseFirestore
             .collection(FirebaseConst.users)
-            .doc(post.createUid);
+            .doc(post.creatorUid);
 
         userCollection.get().then((value) {
           if (value.exists) {

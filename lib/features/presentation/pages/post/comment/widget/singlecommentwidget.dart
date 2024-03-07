@@ -293,8 +293,9 @@ class _SingleCommentWidgetState extends State<SingleCommentWidget> {
                       padding: const EdgeInsets.only(left: 10.0),
                       child: GestureDetector(
                         onTap: () {
-                          //  Navigator.pushNamed(context, PageConst.updateReplayPage,
-                          //    arguments: replay);
+                          Navigator.pushNamed(
+                              context, PageConst.updateReplayPage,
+                              arguments: replay);
 
                           // Navigator.push(context, MaterialPageRoute(builder: (context) => UpdatePostPage()));
                         },

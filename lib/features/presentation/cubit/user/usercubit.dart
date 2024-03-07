@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:equatable/equatable.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:insta_cleanarchitecture/features/domain/entity/user/userentity.dart';
@@ -25,6 +26,8 @@ class UserCubit extends Cubit<UserState> {
         emit(UserLoaded(users: users));
       });
     } on SocketException catch (_) {
+      emit(UserFailure());
+    } catch (_) {
       emit(UserFailure());
     }
   }

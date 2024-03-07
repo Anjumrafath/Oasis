@@ -25,6 +25,7 @@ class _MainScreenState extends State<MainScreen> {
   void initState() {
     BlocProvider.of<GetSingleUserCubit>(context).getSingleUser(uid: widget.uid);
     pageController = PageController(initialPage: _currentIndex);
+    // pageController = PageController();
     super.initState();
   }
 

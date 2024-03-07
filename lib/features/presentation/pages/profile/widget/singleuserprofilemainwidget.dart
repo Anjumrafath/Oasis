@@ -194,7 +194,7 @@ class _SingleUserProfileMainWidgetState
                           if (postState is PostLoaded) {
                             final posts = postState.posts
                                 .where((post) =>
-                                    post.createUid == widget.otherUserId)
+                                    post.creatorUid == widget.otherUserId)
                                 .toList();
                             return GridView.builder(
                                 itemCount: posts.length,

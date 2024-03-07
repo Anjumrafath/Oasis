@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:equatable/equatable.dart';
 import 'package:insta_cleanarchitecture/features/domain/entity/user/userentity.dart';
 import 'package:insta_cleanarchitecture/features/presentation/cubit/credential/credentialstate.dart';
 

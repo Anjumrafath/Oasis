@@ -79,7 +79,7 @@ class _PostDetailMainWidgetState extends State<PostDetailMainWidget> {
                           )
                         ],
                       ),
-                      singlePost.createUid == _currentUid
+                      singlePost.creatorUid == _currentUid
                           ? GestureDetector(
                               onTap: () {
                                 _openBottomModalSheet(context, singlePost);
