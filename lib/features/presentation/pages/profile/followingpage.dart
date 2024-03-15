@@ -12,10 +12,13 @@ class FollowingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: backGroundColor,
+      //backgroundColor: Colors.red,
       appBar: AppBar(
-        title: Text("Following"),
-        backgroundColor: backGroundColor,
+        title: Text(
+          "Following",
+          selectionColor: Colors.grey,
+        ),
+        // backgroundColor: Colors.red,
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10),
@@ -64,7 +67,7 @@ class FollowingPage extends StatelessWidget {
                                     Text(
                                       "${singleUserData.username}",
                                       style: TextStyle(
-                                          color: primaryColor,
+                                          color: Colors.blueGrey,
                                           fontSize: 15,
                                           fontWeight: FontWeight.w600),
                                     )
@@ -85,7 +88,7 @@ class FollowingPage extends StatelessWidget {
       child: Text(
         "No Following",
         style: TextStyle(
-            color: Colors.white, fontSize: 18, fontWeight: FontWeight.w600),
+            color: Colors.blueGrey, fontSize: 18, fontWeight: FontWeight.w600),
       ),
     );
   }

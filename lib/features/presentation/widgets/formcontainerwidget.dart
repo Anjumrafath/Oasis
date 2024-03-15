@@ -35,7 +35,7 @@ class _FormContainerWidgetState extends State<FormContainerWidget> {
     return Container(
       width: double.infinity,
       decoration: BoxDecoration(
-        color: secondaryColor.withOpacity(.35),
+        color: Colors.green.withOpacity(.35),
         borderRadius: BorderRadius.circular(3),
       ),
       child: TextFormField(
@@ -51,7 +51,7 @@ class _FormContainerWidgetState extends State<FormContainerWidget> {
           border: InputBorder.none,
           filled: true,
           hintText: widget.hintText,
-          hintStyle: TextStyle(color: secondaryColor),
+          hintStyle: TextStyle(color: Colors.green),
           suffixIcon: GestureDetector(
             onTap: () {
               setState(() {
@@ -60,7 +60,7 @@ class _FormContainerWidgetState extends State<FormContainerWidget> {
             },
             child: widget.isPasswordField == true
                 ? Icon(_obscureText ? Icons.visibility_off : Icons.visibility,
-                    color: _obscureText == false ? blueColor : secondaryColor)
+                    color: _obscureText == false ? Colors.blue : Colors.green)
                 : Text(""),
           ),
         ),

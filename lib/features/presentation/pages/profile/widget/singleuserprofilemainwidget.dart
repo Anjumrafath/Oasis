@@ -49,12 +49,12 @@ class _SingleUserProfileMainWidgetState
         if (userState is GetSingleOtherUserLoaded) {
           final singleUser = userState.otherUser;
           return Scaffold(
-              backgroundColor: backGroundColor,
+              //   backgroundColor: Colors.red,
               appBar: AppBar(
-                backgroundColor: backGroundColor,
+                //  backgroundColor: Colors.red,
                 title: Text(
                   "${singleUser.username}",
-                  style: TextStyle(color: primaryColor),
+                  style: TextStyle(color: Colors.blueGrey),
                 ),
                 actions: [
                   _currentUid == singleUser.uid
@@ -67,7 +67,7 @@ class _SingleUserProfileMainWidgetState
                               },
                               child: Icon(
                                 Icons.menu,
-                                color: primaryColor,
+                                color: Colors.blueGrey,
                               )),
                         )
                       : Container()
@@ -99,13 +99,13 @@ class _SingleUserProfileMainWidgetState
                                   Text(
                                     "${singleUser.totalPosts}",
                                     style: TextStyle(
-                                        color: primaryColor,
+                                        color: Colors.blueGrey,
                                         fontWeight: FontWeight.bold),
                                   ),
                                   sizeVer(8),
                                   Text(
                                     "Posts",
-                                    style: TextStyle(color: primaryColor),
+                                    style: TextStyle(color: Colors.blueGrey),
                                   )
                                 ],
                               ),
@@ -121,13 +121,13 @@ class _SingleUserProfileMainWidgetState
                                     Text(
                                       "${singleUser.totalFollowers}",
                                       style: TextStyle(
-                                          color: primaryColor,
+                                          color: Colors.blueGrey,
                                           fontWeight: FontWeight.bold),
                                     ),
                                     sizeVer(8),
                                     Text(
                                       "Followers",
-                                      style: TextStyle(color: primaryColor),
+                                      style: TextStyle(color: Colors.blueGrey),
                                     )
                                   ],
                                 ),
@@ -144,13 +144,13 @@ class _SingleUserProfileMainWidgetState
                                     Text(
                                       "${singleUser.totalFollowing}",
                                       style: TextStyle(
-                                          color: primaryColor,
+                                          color: Colors.blueGrey,
                                           fontWeight: FontWeight.bold),
                                     ),
                                     sizeVer(8),
                                     Text(
                                       "Following",
-                                      style: TextStyle(color: primaryColor),
+                                      style: TextStyle(color: Colors.blueGrey),
                                     )
                                   ],
                                 ),
@@ -163,12 +163,13 @@ class _SingleUserProfileMainWidgetState
                       Text(
                         "${singleUser.name == "" ? singleUser.username : singleUser.name}",
                         style: TextStyle(
-                            color: primaryColor, fontWeight: FontWeight.bold),
+                            color: Colors.blueGrey,
+                            fontWeight: FontWeight.bold),
                       ),
                       sizeVer(10),
                       Text(
                         "${singleUser.bio}",
-                        style: TextStyle(color: primaryColor),
+                        style: TextStyle(color: Colors.blueGrey),
                       ),
                       sizeVer(10),
                       _currentUid == singleUser.uid
@@ -178,8 +179,8 @@ class _SingleUserProfileMainWidgetState
                                   ? "UnFollow"
                                   : "Follow",
                               color: singleUser.followers!.contains(_currentUid)
-                                  ? secondaryColor.withOpacity(.4)
-                                  : blueColor,
+                                  ? Colors.grey.withOpacity(.4)
+                                  : Colors.blue,
                               onTapListener: () {
                                 BlocProvider.of<UserCubit>(context)
                                     .followUnFollowUser(
@@ -245,7 +246,7 @@ class _SingleUserProfileMainWidgetState
         builder: (context) {
           return Container(
             height: 150,
-            decoration: BoxDecoration(color: backGroundColor.withOpacity(.8)),
+            decoration: BoxDecoration(color: Colors.grey.withOpacity(.8)),
             child: SingleChildScrollView(
               child: Container(
                 margin: EdgeInsets.symmetric(vertical: 10),
@@ -259,7 +260,7 @@ class _SingleUserProfileMainWidgetState
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 18,
-                            color: primaryColor),
+                            color: Colors.blueGrey),
                       ),
                     ),
                     SizedBox(
@@ -267,7 +268,7 @@ class _SingleUserProfileMainWidgetState
                     ),
                     Divider(
                       thickness: 1,
-                      color: secondaryColor,
+                      color: Colors.blue,
                     ),
                     SizedBox(
                       height: 8,
@@ -286,14 +287,14 @@ class _SingleUserProfileMainWidgetState
                           style: TextStyle(
                               fontWeight: FontWeight.w500,
                               fontSize: 16,
-                              color: primaryColor),
+                              color: Colors.blueGrey),
                         ),
                       ),
                     ),
                     sizeVer(7),
                     Divider(
                       thickness: 1,
-                      color: secondaryColor,
+                      color: Colors.blue,
                     ),
                     sizeVer(7),
                     Padding(
@@ -309,7 +310,7 @@ class _SingleUserProfileMainWidgetState
                           style: TextStyle(
                               fontWeight: FontWeight.w500,
                               fontSize: 16,
-                              color: primaryColor),
+                              color: Colors.blueGrey),
                         ),
                       ),
                     ),

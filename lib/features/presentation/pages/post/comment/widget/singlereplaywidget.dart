@@ -68,7 +68,7 @@ class _SingleReplayWidgetState extends State<SingleReplayWidget> {
                           style: TextStyle(
                               fontSize: 15,
                               fontWeight: FontWeight.bold,
-                              color: primaryColor),
+                              color: Colors.grey),
                         ),
                         GestureDetector(
                             onTap: widget.onLikeClickListener,
@@ -79,19 +79,19 @@ class _SingleReplayWidgetState extends State<SingleReplayWidget> {
                               size: 20,
                               color: widget.replay.likes!.contains(_currentUid)
                                   ? Colors.red
-                                  : darkGreyColor,
+                                  : Colors.grey,
                             ))
                       ],
                     ),
                     sizeVer(4),
                     Text(
                       "${widget.replay.description}",
-                      style: TextStyle(color: primaryColor),
+                      style: TextStyle(color: Colors.grey),
                     ),
                     sizeVer(4),
                     Text(
                       "${DateFormat("dd/MMM/yyy").format(widget.replay.createAt!.toDate())}",
-                      style: TextStyle(color: darkGreyColor),
+                      style: TextStyle(color: Colors.grey),
                     ),
                   ],
                 ),

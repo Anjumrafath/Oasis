@@ -32,7 +32,7 @@ class _SignInPageState extends State<SignInPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: backGroundColor,
+      // backgroundColor: Colors.red,
       // This widget is typically used to listen to state changes from a Cubit or Bloc and rebuild its UI based on those changes.blocconsumer
       body: BlocConsumer<CredentialCubit, CredentialState>(
         listener: (context, credentialState) {
@@ -91,7 +91,7 @@ class _SignInPageState extends State<SignInPage> {
           ),
           sizeVer(15),
           ButtonContainerWidget(
-            color: blueColor,
+            color: Colors.blue,
             text: "Sign In",
             onTapListener: () {
               _signInUser();
@@ -107,7 +107,7 @@ class _SignInPageState extends State<SignInPage> {
                     Text(
                       "Please wait",
                       style: TextStyle(
-                          color: primaryColor,
+                          color: Colors.red,
                           fontSize: 16,
                           fontWeight: FontWeight.w400),
                     ),
@@ -125,13 +125,13 @@ class _SignInPageState extends State<SignInPage> {
             flex: 2,
           ),
           Divider(
-            color: secondaryColor,
+            color: Colors.green,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text("Don't have an account?",
-                  style: TextStyle(color: primaryColor)),
+                  style: TextStyle(color: Colors.blue)),
               InkWell(
                 onTap: () {
                   // Navigator.pushAndRemoveUntil(
@@ -143,7 +143,7 @@ class _SignInPageState extends State<SignInPage> {
                 },
                 child: Text("Sign Up.",
                     style: TextStyle(
-                        fontWeight: FontWeight.bold, color: primaryColor)),
+                        fontWeight: FontWeight.bold, color: Colors.blueGrey)),
               ),
             ],
           )

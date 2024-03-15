@@ -30,10 +30,13 @@ class _EditReplayMainWidgetState extends State<EditReplayMainWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: backGroundColor,
+      // backgroundColor: Colors.red,
       appBar: AppBar(
-        backgroundColor: backGroundColor,
-        title: Text("Edit Replay"),
+        // backgroundColor: Colors.red,
+        title: Text(
+          "Edit Replay",
+          selectionColor: Colors.blueGrey,
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10),
@@ -45,7 +48,7 @@ class _EditReplayMainWidgetState extends State<EditReplayMainWidget> {
             ),
             sizeVer(10),
             ButtonContainerWidget(
-              color: blueColor,
+              color: Colors.blue,
               text: "Save Changes",
               onTapListener: () {
                 _editReplay();
@@ -58,7 +61,7 @@ class _EditReplayMainWidgetState extends State<EditReplayMainWidget> {
                     children: [
                       Text(
                         "Updating...",
-                        style: TextStyle(color: Colors.white),
+                        style: TextStyle(color: Colors.red),
                       ),
                       sizeHor(10),
                       CircularProgressIndicator(),

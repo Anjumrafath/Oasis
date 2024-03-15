@@ -89,7 +89,7 @@ class _SingleCommentWidgetState extends State<SingleCommentWidget> {
                           style: TextStyle(
                               fontSize: 15,
                               fontWeight: FontWeight.bold,
-                              color: primaryColor),
+                              color: Colors.blueGrey),
                         ),
                         GestureDetector(
                             onTap: widget.onLikeClickListener,
@@ -100,21 +100,21 @@ class _SingleCommentWidgetState extends State<SingleCommentWidget> {
                               size: 20,
                               color: widget.comment.likes!.contains(_currentUid)
                                   ? Colors.red
-                                  : darkGreyColor,
+                                  : Colors.grey,
                             ))
                       ],
                     ),
                     sizeVer(4),
                     Text(
                       "${widget.comment.description}",
-                      style: TextStyle(color: primaryColor),
+                      style: TextStyle(color: Colors.blueGrey),
                     ),
                     sizeVer(4),
                     Row(
                       children: [
                         Text(
                           "${DateFormat("dd/MMM/yyy").format(widget.comment.createAt!.toDate())}",
-                          style: TextStyle(color: darkGreyColor),
+                          style: TextStyle(color: Colors.grey),
                         ),
                         sizeHor(15),
                         GestureDetector(
@@ -126,7 +126,7 @@ class _SingleCommentWidgetState extends State<SingleCommentWidget> {
                             child: Text(
                               "Replay",
                               style:
-                                  TextStyle(color: darkGreyColor, fontSize: 12),
+                                  TextStyle(color: Colors.grey, fontSize: 12),
                             )),
                         sizeHor(15),
                         GestureDetector(
@@ -142,8 +142,7 @@ class _SingleCommentWidgetState extends State<SingleCommentWidget> {
                           },
                           child: Text(
                             "View Replays",
-                            style:
-                                TextStyle(color: darkGreyColor, fontSize: 12),
+                            style: TextStyle(color: Colors.grey, fontSize: 12),
                           ),
                         ),
                       ],
@@ -193,7 +192,7 @@ class _SingleCommentWidgetState extends State<SingleCommentWidget> {
                                 },
                                 child: Text(
                                   "Post",
-                                  style: TextStyle(color: blueColor),
+                                  style: TextStyle(color: Colors.blue),
                                 ),
                               )
                             ],
@@ -241,7 +240,7 @@ class _SingleCommentWidgetState extends State<SingleCommentWidget> {
         builder: (context) {
           return Container(
             height: 150,
-            decoration: BoxDecoration(color: backGroundColor.withOpacity(.8)),
+            decoration: BoxDecoration(color: Colors.grey.withOpacity(.8)),
             child: SingleChildScrollView(
               child: Container(
                 margin: EdgeInsets.symmetric(vertical: 10),
@@ -255,7 +254,7 @@ class _SingleCommentWidgetState extends State<SingleCommentWidget> {
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 18,
-                            color: primaryColor),
+                            color: Colors.grey),
                       ),
                     ),
                     SizedBox(
@@ -263,7 +262,7 @@ class _SingleCommentWidgetState extends State<SingleCommentWidget> {
                     ),
                     Divider(
                       thickness: 1,
-                      color: secondaryColor,
+                      color: Colors.blue,
                     ),
                     SizedBox(
                       height: 8,
@@ -279,14 +278,14 @@ class _SingleCommentWidgetState extends State<SingleCommentWidget> {
                           style: TextStyle(
                               fontWeight: FontWeight.w500,
                               fontSize: 16,
-                              color: primaryColor),
+                              color: Colors.grey),
                         ),
                       ),
                     ),
                     sizeVer(7),
                     Divider(
                       thickness: 1,
-                      color: secondaryColor,
+                      color: Colors.blue,
                     ),
                     sizeVer(7),
                     Padding(
@@ -304,7 +303,7 @@ class _SingleCommentWidgetState extends State<SingleCommentWidget> {
                           style: TextStyle(
                               fontWeight: FontWeight.w500,
                               fontSize: 16,
-                              color: primaryColor),
+                              color: Colors.red),
                         ),
                       ),
                     ),

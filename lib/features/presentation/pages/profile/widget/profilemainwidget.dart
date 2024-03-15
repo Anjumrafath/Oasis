@@ -7,6 +7,7 @@ import 'package:insta_cleanarchitecture/features/presentation/cubit/auth/authcub
 import 'package:insta_cleanarchitecture/features/presentation/cubit/post/postcubit.dart';
 import 'package:insta_cleanarchitecture/features/presentation/cubit/post/poststate.dart';
 import 'package:insta_cleanarchitecture/profilewidget.dart';
+import 'package:shimmer/shimmer.dart';
 
 class ProfileMainWidget extends StatefulWidget {
   final UserEntity currentUser;
@@ -28,12 +29,12 @@ class _ProfileMainWidgetState extends State<ProfileMainWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: backGroundColor,
+        // backgroundColor: Colors.red,
         appBar: AppBar(
-          backgroundColor: backGroundColor,
+          //  backgroundColor: Colors.red,
           title: Text(
             "${widget.currentUser.username}",
-            style: TextStyle(color: primaryColor),
+            style: TextStyle(color: Colors.blueGrey),
           ),
           actions: [
             Padding(
@@ -44,7 +45,7 @@ class _ProfileMainWidgetState extends State<ProfileMainWidget> {
                   },
                   child: Icon(
                     Icons.menu,
-                    color: primaryColor,
+                    color: Colors.blueGrey,
                   )),
             )
           ],
@@ -74,13 +75,13 @@ class _ProfileMainWidgetState extends State<ProfileMainWidget> {
                             Text(
                               "${widget.currentUser.totalPosts}",
                               style: TextStyle(
-                                  color: primaryColor,
+                                  color: Colors.blueGrey,
                                   fontWeight: FontWeight.bold),
                             ),
                             sizeVer(8),
                             Text(
                               "Posts",
-                              style: TextStyle(color: primaryColor),
+                              style: TextStyle(color: Colors.blueGrey),
                             )
                           ],
                         ),
@@ -96,13 +97,13 @@ class _ProfileMainWidgetState extends State<ProfileMainWidget> {
                               Text(
                                 "${widget.currentUser.totalFollowers}",
                                 style: TextStyle(
-                                    color: primaryColor,
+                                    color: Colors.blueGrey,
                                     fontWeight: FontWeight.bold),
                               ),
                               sizeVer(8),
                               Text(
                                 "Followers",
-                                style: TextStyle(color: primaryColor),
+                                style: TextStyle(color: Colors.blueGrey),
                               )
                             ],
                           ),
@@ -119,13 +120,13 @@ class _ProfileMainWidgetState extends State<ProfileMainWidget> {
                               Text(
                                 "${widget.currentUser.totalFollowing}",
                                 style: TextStyle(
-                                    color: primaryColor,
+                                    color: Colors.blueGrey,
                                     fontWeight: FontWeight.bold),
                               ),
                               sizeVer(8),
                               Text(
                                 "Following",
-                                style: TextStyle(color: primaryColor),
+                                style: TextStyle(color: Colors.blueGrey),
                               )
                             ],
                           ),
@@ -138,12 +139,12 @@ class _ProfileMainWidgetState extends State<ProfileMainWidget> {
                 Text(
                   "${widget.currentUser.name == "" ? widget.currentUser.username : widget.currentUser.name}",
                   style: TextStyle(
-                      color: primaryColor, fontWeight: FontWeight.bold),
+                      color: Colors.blueGrey, fontWeight: FontWeight.bold),
                 ),
                 sizeVer(10),
                 Text(
                   "${widget.currentUser.bio}",
-                  style: TextStyle(color: primaryColor),
+                  style: TextStyle(color: Colors.blueGrey),
                 ),
                 sizeVer(10),
                 BlocBuilder<PostCubit, PostState>(
@@ -179,8 +180,33 @@ class _ProfileMainWidgetState extends State<ProfileMainWidget> {
                           });
                     }
                     return Center(
-                      child: CircularProgressIndicator(),
-                    );
+                        child: Container(
+                            height: 800,
+                            width: double.infinity,
+                            child: Shimmer.fromColors(
+                              direction: ShimmerDirection.ttb,
+                              child: GridView.builder(
+                                  gridDelegate:
+                                      SliverGridDelegateWithFixedCrossAxisCount(
+                                          crossAxisCount: 3,
+                                          crossAxisSpacing: 5,
+                                          mainAxisSpacing: 5),
+                                  itemBuilder: (context, index) {
+                                    return Container(
+                                      margin: EdgeInsets.all(3),
+                                      height: 100,
+                                      width: 100,
+                                      color: Colors.blueGrey,
+                                    );
+                                  }),
+                              baseColor: Colors.blueGrey,
+                              highlightColor: Colors.blueGrey,
+                            ))
+                        // child: CircularProgressIndicator(),
+                        );
+                    // return Center(
+                    // child: CircularProgressIndicator(),
+                    //);
                   },
                 )
               ],
@@ -195,7 +221,7 @@ class _ProfileMainWidgetState extends State<ProfileMainWidget> {
         builder: (context) {
           return Container(
             height: 150,
-            decoration: BoxDecoration(color: backGroundColor.withOpacity(.8)),
+            decoration: BoxDecoration(color: Colors.blueGrey.withOpacity(.8)),
             child: SingleChildScrollView(
               child: Container(
                 margin: EdgeInsets.symmetric(vertical: 10),
@@ -209,7 +235,7 @@ class _ProfileMainWidgetState extends State<ProfileMainWidget> {
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 18,
-                            color: primaryColor),
+                            color: Colors.blueGrey),
                       ),
                     ),
                     SizedBox(
@@ -217,7 +243,7 @@ class _ProfileMainWidgetState extends State<ProfileMainWidget> {
                     ),
                     Divider(
                       thickness: 1,
-                      color: secondaryColor,
+                      color: Colors.blue,
                     ),
                     SizedBox(
                       height: 8,
@@ -236,14 +262,14 @@ class _ProfileMainWidgetState extends State<ProfileMainWidget> {
                           style: TextStyle(
                               fontWeight: FontWeight.w500,
                               fontSize: 16,
-                              color: primaryColor),
+                              color: Colors.blueGrey),
                         ),
                       ),
                     ),
                     sizeVer(7),
                     Divider(
                       thickness: 1,
-                      color: secondaryColor,
+                      color: Colors.blue,
                     ),
                     sizeVer(7),
                     Padding(
@@ -259,7 +285,7 @@ class _ProfileMainWidgetState extends State<ProfileMainWidget> {
                           style: TextStyle(
                               fontWeight: FontWeight.w500,
                               fontSize: 16,
-                              color: primaryColor),
+                              color: Colors.blueGrey),
                         ),
                       ),
                     ),

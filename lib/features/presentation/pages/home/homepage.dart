@@ -6,6 +6,8 @@ import 'package:insta_cleanarchitecture/features/presentation/cubit/post/postcub
 import 'package:insta_cleanarchitecture/features/presentation/cubit/post/poststate.dart';
 import 'package:insta_cleanarchitecture/features/presentation/pages/home/widgets/singlepostcardwidget.dart';
 import 'package:insta_cleanarchitecture/injection container.dart' as di;
+import 'package:insta_cleanarchitecture/themedbutton.dart';
+import 'package:shimmer/shimmer.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -13,15 +15,16 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: backGroundColor,
+      // backgroundColor: Colors.red,
       appBar: AppBar(
-        backgroundColor: backGroundColor,
+        //  backgroundColor: Colors.red,
         title: Image.asset(
           "assets/logo.png",
           width: 150,
           height: 150,
         ),
         actions: [
+          ThemedButton(),
           Padding(
             padding: const EdgeInsets.only(right: 10.0),
             child: Icon(
@@ -38,8 +41,27 @@ class HomePage extends StatelessWidget {
           builder: (context, postState) {
             if (postState is PostLoading) {
               return Center(
-                child: CircularProgressIndicator(),
-              );
+                  child: Container(
+                      height: 800,
+                      width: double.infinity,
+                      child: Shimmer.fromColors(
+                        direction: ShimmerDirection.ttb,
+                        child: ListView.builder(
+                            itemCount: 6,
+                            itemBuilder: (context, index) {
+                              return Container(
+                                margin: EdgeInsets.all(20),
+                                height: 200,
+                                width: 300,
+                                color: Colors.blueGrey,
+                              );
+                            }),
+                        baseColor: Colors.blueGrey,
+                        highlightColor: Colors.blueGrey,
+                      ))
+                  // child: CircularProgressIndicator(),
+                  );
+              // child: CircularProgressIndicator(),
             }
             if (postState is PostFailure) {
               toast("Some Failure occured while creating the post");
@@ -75,7 +97,7 @@ class HomePage extends StatelessWidget {
       child: Text(
         "No Posts Yet",
         style: TextStyle(
-            color: Colors.white, fontWeight: FontWeight.bold, fontSize: 18),
+            color: Colors.blueGrey, fontWeight: FontWeight.bold, fontSize: 18),
       ),
     );
   }

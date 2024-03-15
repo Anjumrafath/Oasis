@@ -52,6 +52,8 @@ dependencies:
   flutter_launcher_icons: ^0.13.1
   flutter_font_icons: ^2.2.7
   permission_handler: ^11.3.0
+  shimmer: ^3.0.0
+  shared_preferences: ^2.2.2
 
 dev_dependencies:
   flutter_test:

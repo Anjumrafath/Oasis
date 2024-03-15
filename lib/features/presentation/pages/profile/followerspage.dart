@@ -12,10 +12,13 @@ class FollowersPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: backGroundColor,
+      // backgroundColor: Colors.red,
       appBar: AppBar(
-        title: Text("Followers"),
-        backgroundColor: backGroundColor,
+        title: Text(
+          "Followers",
+          selectionColor: Colors.grey,
+        ),
+        // backgroundColor: Colors.red,
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10),
@@ -63,7 +66,7 @@ class FollowersPage extends StatelessWidget {
                                     Text(
                                       "${singleUserData.username}",
                                       style: TextStyle(
-                                          color: primaryColor,
+                                          color: Colors.blueGrey,
                                           fontSize: 15,
                                           fontWeight: FontWeight.w600),
                                     )
@@ -84,7 +87,7 @@ class FollowersPage extends StatelessWidget {
       child: Text(
         "No Followers",
         style: TextStyle(
-            color: Colors.white, fontSize: 18, fontWeight: FontWeight.w600),
+            color: Colors.blueGrey, fontSize: 18, fontWeight: FontWeight.w600),
       ),
     );
   }

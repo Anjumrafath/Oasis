@@ -13,21 +13,21 @@ class ProfileFormWidget extends StatelessWidget {
       children: [
         Text(
           "$title",
-          style: TextStyle(color: primaryColor, fontSize: 16),
+          style: TextStyle(color: Colors.blueGrey, fontSize: 16),
         ),
         sizeVer(10),
         TextFormField(
           controller: controller,
-          style: TextStyle(color: primaryColor),
+          style: TextStyle(color: Colors.blueGrey),
           decoration: InputDecoration(
             border: InputBorder.none,
-            labelStyle: TextStyle(color: primaryColor),
+            labelStyle: TextStyle(color: Colors.blueGrey),
           ),
         ),
         Container(
           width: double.infinity,
           height: 1,
-          color: secondaryColor,
+          color: Colors.blue,
         ),
       ],
     );

@@ -9,6 +9,7 @@ import 'package:insta_cleanarchitecture/features/presentation/pages/home/homepag
 import 'package:insta_cleanarchitecture/features/presentation/pages/post/uploadpostpage.dart';
 import 'package:insta_cleanarchitecture/features/presentation/pages/profile/profilepage.dart';
 import 'package:insta_cleanarchitecture/features/presentation/pages/search/searchpage.dart';
+import 'package:insta_cleanarchitecture/themedbutton.dart';
 
 class MainScreen extends StatefulWidget {
   final String uid;
@@ -53,9 +54,9 @@ class _MainScreenState extends State<MainScreen> {
           final currentUser = getSingleUserState.user;
 
           return Scaffold(
-            backgroundColor: backGroundColor,
+            // backgroundColor: Colors.red,
             bottomNavigationBar: BottomNavigationBar(
-              backgroundColor: backGroundColor,
+              //  backgroundColor: Colors.red,
               items: [
                 BottomNavigationBarItem(
                   icon: Icon(Icons.home, color: Colors.blueGrey),

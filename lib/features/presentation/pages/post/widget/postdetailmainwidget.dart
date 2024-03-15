@@ -42,10 +42,10 @@ class _PostDetailMainWidgetState extends State<PostDetailMainWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: backGroundColor,
+        // backgroundColor: Colors.red,
         title: Text("Post Detail"),
       ),
-      backgroundColor: backGroundColor,
+      //  backgroundColor: Colors.red,
       body: BlocBuilder<GetSinglePostCubit, GetSinglePostState>(
         builder: (context, getSinglePostState) {
           if (getSinglePostState is GetSinglePostLoaded) {
@@ -74,7 +74,7 @@ class _PostDetailMainWidgetState extends State<PostDetailMainWidget> {
                           Text(
                             "${singlePost.username}",
                             style: TextStyle(
-                                color: primaryColor,
+                                color: Colors.grey,
                                 fontWeight: FontWeight.bold),
                           )
                         ],
@@ -86,7 +86,7 @@ class _PostDetailMainWidgetState extends State<PostDetailMainWidget> {
                               },
                               child: Icon(
                                 Icons.more_vert,
-                                color: primaryColor,
+                                color: Colors.grey,
                               ))
                           : Container(
                               width: 0,
@@ -125,7 +125,7 @@ class _PostDetailMainWidgetState extends State<PostDetailMainWidget> {
                               child: Icon(
                                 Icons.favorite,
                                 size: 100,
-                                color: Colors.white,
+                                color: Colors.blueGrey,
                               )),
                         ),
                       ],
@@ -145,7 +145,7 @@ class _PostDetailMainWidgetState extends State<PostDetailMainWidget> {
                                     : Icons.favorite_outline,
                                 color: singlePost.likes!.contains(_currentUid)
                                     ? Colors.red
-                                    : primaryColor,
+                                    : Colors.grey,
                               )),
                           sizeHor(10),
                           GestureDetector(
@@ -159,18 +159,18 @@ class _PostDetailMainWidgetState extends State<PostDetailMainWidget> {
                               },
                               child: Icon(
                                 Icons.add_box_rounded,
-                                color: primaryColor,
+                                color: Colors.blueGrey,
                               )),
                           sizeHor(10),
                           Icon(
                             Icons.message_sharp,
-                            color: primaryColor,
+                            color: Colors.blueGrey,
                           ),
                         ],
                       ),
                       Icon(
                         Icons.bookmark_border,
-                        color: primaryColor,
+                        color: Colors.blueGrey,
                       )
                     ],
                   ),
@@ -178,7 +178,7 @@ class _PostDetailMainWidgetState extends State<PostDetailMainWidget> {
                   Text(
                     "${singlePost.totalLikes} likes",
                     style: TextStyle(
-                        color: primaryColor, fontWeight: FontWeight.bold),
+                        color: Colors.blueGrey, fontWeight: FontWeight.bold),
                   ),
                   sizeVer(10),
                   Row(
@@ -186,12 +186,13 @@ class _PostDetailMainWidgetState extends State<PostDetailMainWidget> {
                       Text(
                         "${singlePost.username}",
                         style: TextStyle(
-                            color: primaryColor, fontWeight: FontWeight.bold),
+                            color: Colors.blueGrey,
+                            fontWeight: FontWeight.bold),
                       ),
                       sizeHor(10),
                       Text(
                         "${singlePost.description}",
-                        style: TextStyle(color: primaryColor),
+                        style: TextStyle(color: Colors.blueGrey),
                       ),
                     ],
                   ),
@@ -204,12 +205,12 @@ class _PostDetailMainWidgetState extends State<PostDetailMainWidget> {
                       },
                       child: Text(
                         "View all ${singlePost.totalComments} comments",
-                        style: TextStyle(color: darkGreyColor),
+                        style: TextStyle(color: Colors.grey),
                       )),
                   sizeVer(10),
                   Text(
                     "${DateFormat("dd/MMM/yyy").format(singlePost.createAt!.toDate())}",
-                    style: TextStyle(color: darkGreyColor),
+                    style: TextStyle(color: Colors.grey),
                   ),
                 ],
               ),
@@ -229,7 +230,7 @@ class _PostDetailMainWidgetState extends State<PostDetailMainWidget> {
         builder: (context) {
           return Container(
             height: 150,
-            decoration: BoxDecoration(color: backGroundColor.withOpacity(.8)),
+            decoration: BoxDecoration(color: Colors.grey.withOpacity(.8)),
             child: SingleChildScrollView(
               child: Container(
                 margin: EdgeInsets.symmetric(vertical: 10),
@@ -243,7 +244,7 @@ class _PostDetailMainWidgetState extends State<PostDetailMainWidget> {
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 18,
-                            color: primaryColor),
+                            color: Colors.grey),
                       ),
                     ),
                     SizedBox(
@@ -251,7 +252,7 @@ class _PostDetailMainWidgetState extends State<PostDetailMainWidget> {
                     ),
                     Divider(
                       thickness: 1,
-                      color: secondaryColor,
+                      color: Colors.blue,
                     ),
                     SizedBox(
                       height: 8,
@@ -265,14 +266,14 @@ class _PostDetailMainWidgetState extends State<PostDetailMainWidget> {
                           style: TextStyle(
                               fontWeight: FontWeight.w500,
                               fontSize: 16,
-                              color: primaryColor),
+                              color: Colors.grey),
                         ),
                       ),
                     ),
                     sizeVer(7),
                     Divider(
                       thickness: 1,
-                      color: secondaryColor,
+                      color: Colors.blue,
                     ),
                     sizeVer(7),
                     Padding(
@@ -289,7 +290,7 @@ class _PostDetailMainWidgetState extends State<PostDetailMainWidget> {
                           style: TextStyle(
                               fontWeight: FontWeight.w500,
                               fontSize: 16,
-                              color: primaryColor),
+                              color: Colors.grey),
                         ),
                       ),
                     ),

@@ -56,15 +56,18 @@ class _UpdatePostMainWidget extends State<UpdatePostMainWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: backGroundColor,
+      //  backgroundColor: Colors.red,
       appBar: AppBar(
-        title: Text("Edit Post"),
+        title: Text(
+          "Edit Post",
+          selectionColor: Colors.blueGrey,
+        ),
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 10),
             child: GestureDetector(
                 onTap: _updatePost,
-                child: Icon(Icons.done, color: blueColor, size: 25)),
+                child: Icon(Icons.done, color: Colors.blue, size: 25)),
           ),
         ],
       ),
@@ -86,7 +89,7 @@ class _UpdatePostMainWidget extends State<UpdatePostMainWidget> {
             Text(
               "${widget.post.username}",
               style: TextStyle(
-                color: primaryColor,
+                color: Colors.blueGrey,
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
               ),
@@ -110,12 +113,12 @@ class _UpdatePostMainWidget extends State<UpdatePostMainWidget> {
                         width: 30,
                         height: 30,
                         decoration: BoxDecoration(
-                          color: Colors.white,
+                          color: Colors.blueGrey,
                           borderRadius: BorderRadius.circular(15),
                         ),
                         child: Icon(
                           Icons.edit,
-                          color: blueColor,
+                          color: Colors.blue,
                         )),
                   ),
                 ),
@@ -131,7 +134,7 @@ class _UpdatePostMainWidget extends State<UpdatePostMainWidget> {
                     children: [
                       Text(
                         "Updating...",
-                        style: TextStyle(color: Colors.white),
+                        style: TextStyle(color: Colors.red),
                       ),
                       sizeHor(10),
                       CircularProgressIndicator(),

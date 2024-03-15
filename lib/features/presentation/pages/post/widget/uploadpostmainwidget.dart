@@ -13,6 +13,7 @@ import 'package:insta_cleanarchitecture/features/presentation/pages/profile/widg
 import 'package:insta_cleanarchitecture/profilewidget.dart';
 import 'package:uuid/uuid.dart';
 import 'package:insta_cleanarchitecture/injection container.dart' as di;
+import 'package:shimmer/shimmer.dart';
 
 class UploadPostMainWidget extends StatefulWidget {
   final UserEntity currentUser;
@@ -57,7 +58,7 @@ class _UploadPostMainWidgetState extends State<UploadPostMainWidget> {
     return _image == null
         ? _uploadPostWidget()
         : Scaffold(
-            backgroundColor: backGroundColor,
+            // backgroundColor: Colors.red,
             appBar: AppBar(
               leading: GestureDetector(
                   onTap: () => setState(
@@ -87,7 +88,7 @@ class _UploadPostMainWidgetState extends State<UploadPostMainWidget> {
                   sizeVer(10),
                   Text(
                     "${widget.currentUser.username}",
-                    style: TextStyle(color: Colors.white),
+                    style: TextStyle(color: Colors.blueGrey),
                   ),
                   sizeVer(10),
                   Container(
@@ -102,18 +103,30 @@ class _UploadPostMainWidgetState extends State<UploadPostMainWidget> {
                   ),
                   sizeVer(10),
                   _uploading == true
-                      ? Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              "Uploading...",
-                              style: TextStyle(color: Colors.white),
-                            ),
-                            sizeHor(10),
-                            CircularProgressIndicator(),
-                          ],
+                      ? Shimmer.fromColors(
+                          baseColor: Colors.grey,
+                          highlightColor: Colors.blue,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                "Uploading...",
+                                style: TextStyle(
+                                    color: Color.fromARGB(255, 173, 78, 78)),
+                              ),
+                              sizeHor(10),
+                              //   CircularProgressIndicator(),
+                            ],
+                          ),
                         )
-                      : Container(width: 0, height: 0)
+                      : Container(
+                          width: 10,
+                          height: 10,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color: Colors.grey,
+                          ),
+                        ),
                 ],
               ),
             ),
@@ -160,7 +173,7 @@ class _UploadPostMainWidgetState extends State<UploadPostMainWidget> {
 
   _uploadPostWidget() {
     return Scaffold(
-      backgroundColor: backGroundColor,
+      //  backgroundColor: Colors.red,
       body: Center(
         child: GestureDetector(
           onTap: selectImage,
@@ -168,13 +181,13 @@ class _UploadPostMainWidgetState extends State<UploadPostMainWidget> {
             width: 150,
             height: 150,
             decoration: BoxDecoration(
-              color: secondaryColor.withOpacity(0.3),
+              color: Colors.blue.withOpacity(0.3),
               shape: BoxShape.circle,
             ),
             child: Center(
               child: Icon(
                 Icons.upload,
-                color: primaryColor,
+                color: Colors.blueGrey,
                 size: 40,
               ),
             ),

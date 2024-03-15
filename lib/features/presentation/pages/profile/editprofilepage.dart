@@ -61,7 +61,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: backGroundColor,
+        // backgroundColor: Colors.red,
         appBar: AppBar(
           title: Text("Edit Profile"),
           leading: GestureDetector(
@@ -75,7 +75,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                 onTap: _updateUserProfileData,
                 child: Icon(
                   Icons.done,
-                  color: blueColor,
+                  color: Colors.blue,
                 ),
               ),
             )
@@ -105,7 +105,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                   onTap: selectImage,
                   child: Text("Change Profile Pic",
                       style: TextStyle(
-                          color: blueColor,
+                          color: Colors.blue,
                           fontSize: 20,
                           fontWeight: FontWeight.w100)),
                 )),
@@ -131,7 +131,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                         children: [
                           Text(
                             "Please wait...",
-                            style: TextStyle(color: Colors.white),
+                            style: TextStyle(color: Colors.blueGrey),
                           ),
                           sizeHor(10),
                           CircularProgressIndicator()

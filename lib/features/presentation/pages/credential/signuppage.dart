@@ -61,38 +61,38 @@ class _SignUpPageState extends State<SignUpPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: backGroundColor,
+        //  backgroundColor: Colors.white,
         // This widget is typically used to listen to state changes from a Cubit or Bloc and rebuild its UI based on those changes.blocconsumer
         body: BlocConsumer<CredentialCubit, CredentialState>(
-          // This listener function is called whenever there is a state change in the CredentialCubit
-          // It takes the current BuildContext and the updated state (credentialState) as parameters
-          listener: (context, credentialState) {
-            if (credentialState is CredentialSuccess) {
-              // If the credentialState is CredentialSuccess, it means that the credential validation was successful
-              BlocProvider.of<AuthCubit>(context).loggedIn();
+      // This listener function is called whenever there is a state change in the CredentialCubit
+      // It takes the current BuildContext and the updated state (credentialState) as parameters
+      listener: (context, credentialState) {
+        if (credentialState is CredentialSuccess) {
+          // If the credentialState is CredentialSuccess, it means that the credential validation was successful
+          BlocProvider.of<AuthCubit>(context).loggedIn();
+        }
+        if (credentialState is CredentialFailure) {
+          toast("Invalid Email and Password");
+        }
+      },
+      // This builder function is called whenever there's a state change in the CredentialCubit
+      builder: (context, credentialState) {
+        if (credentialState is CredentialSuccess) {
+          return BlocBuilder<AuthCubit, AuthState>(
+              builder: (context, authState) {
+            // If the authState is Authenticated, it means that the user is logged in
+            // We return the MainScreen widget and pass the user's UID to it
+            if (authState is Authenticated) {
+              return MainScreen(uid: authState.uid);
+            } else {
+              return _bodyWidget();
             }
-            if (credentialState is CredentialFailure) {
-              toast("Invalid Email and Password");
-            }
-          },
-          // This builder function is called whenever there's a state change in the CredentialCubit
-          builder: (context, credentialState) {
-            if (credentialState is CredentialSuccess) {
-              return BlocBuilder<AuthCubit, AuthState>(
-                  builder: (context, authState) {
-                // If the authState is Authenticated, it means that the user is logged in
-                // We return the MainScreen widget and pass the user's UID to it
-                if (authState is Authenticated) {
-                  return MainScreen(uid: authState.uid);
-                } else {
-                  return _bodyWidget();
-                }
-              });
-            }
+          });
+        }
 
-            return _bodyWidget();
-          },
-        ));
+        return _bodyWidget();
+      },
+    ));
   }
 
   _bodyWidget() {
@@ -128,7 +128,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   bottom: -15,
                   child: IconButton(
                     onPressed: selectImage,
-                    icon: Icon(Icons.add_a_photo, color: blueColor),
+                    icon: Icon(Icons.add_a_photo, color: Colors.blue),
                   ),
                 ),
               ],
@@ -157,7 +157,7 @@ class _SignUpPageState extends State<SignUpPage> {
           ),
           sizeVer(15),
           ButtonContainerWidget(
-            color: blueColor,
+            color: Colors.blue,
             text: "Sign Up",
             onTapListener: () {
               _signUpUser();
@@ -171,7 +171,7 @@ class _SignUpPageState extends State<SignUpPage> {
                     Text(
                       "Please wait",
                       style: TextStyle(
-                        color: primaryColor,
+                        color: Colors.red,
                         fontSize: 16,
                         fontWeight: FontWeight.w400,
                       ),
@@ -186,13 +186,13 @@ class _SignUpPageState extends State<SignUpPage> {
             flex: 2,
           ),
           Divider(
-            color: secondaryColor,
+            color: Colors.blue,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text("Already have an account?",
-                  style: TextStyle(color: primaryColor)),
+                  style: TextStyle(color: Colors.blueGrey)),
               InkWell(
                 onTap: () {
                   //  Navigator.pushAndRemoveUntil(
@@ -204,7 +204,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 },
                 child: Text("Sign In.",
                     style: TextStyle(
-                        fontWeight: FontWeight.bold, color: primaryColor)),
+                        fontWeight: FontWeight.bold, color: Colors.blueGrey)),
               ),
             ],
           ),

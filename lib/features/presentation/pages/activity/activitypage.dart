@@ -7,7 +7,7 @@ class ActivityPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: backGroundColor,
+      //backgroundColor: Colors.red,
       appBar: AppBar(
         title: Text("Activity"),
       ),

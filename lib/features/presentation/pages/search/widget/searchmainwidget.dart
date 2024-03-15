@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:insta_cleanarchitecture/const.dart';
 import 'package:insta_cleanarchitecture/features/domain/entity/posts/postentity.dart';
@@ -10,6 +11,7 @@ import 'package:insta_cleanarchitecture/features/presentation/cubit/user/usersta
 import 'package:insta_cleanarchitecture/features/presentation/pages/search/widget/searchwidget.dart';
 import 'package:insta_cleanarchitecture/profilewidget.dart';
 import 'package:insta_cleanarchitecture/features/presentation/pages/post/postdetailpage.dart';
+import 'package:shimmer/shimmer.dart';
 
 class SearchMainWidget extends StatefulWidget {
   const SearchMainWidget({Key? key}) : super(key: key);
@@ -44,7 +46,7 @@ class _SearchMainWidgetState extends State<SearchMainWidget> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: backGroundColor,
+        // backgroundColor: Colors.red,
         // this below section using BlocBuilder to build UI based on UserCubit state
         body: BlocBuilder<UserCubit, UserState>(
           builder: (context, userState) {
@@ -100,7 +102,7 @@ class _SearchMainWidgetState extends State<SearchMainWidget> {
                                         Text(
                                           "${filterAllUsers[index].username}",
                                           style: TextStyle(
-                                              color: primaryColor,
+                                              color: Colors.blueGrey,
                                               fontSize: 15,
                                               fontWeight: FontWeight.w600),
                                         )
@@ -141,18 +143,65 @@ class _SearchMainWidgetState extends State<SearchMainWidget> {
                                       }),
                                 );
                               }
+
                               return Center(
-                                child: CircularProgressIndicator(),
-                              );
+                                  child: Container(
+                                      height: 800,
+                                      width: double.infinity,
+                                      child: Shimmer.fromColors(
+                                        direction: ShimmerDirection.ttb,
+                                        child: GridView.builder(
+                                            gridDelegate:
+                                                SliverGridDelegateWithFixedCrossAxisCount(
+                                                    crossAxisCount: 3,
+                                                    crossAxisSpacing: 5,
+                                                    mainAxisSpacing: 5),
+                                            itemBuilder: (context, index) {
+                                              return Container(
+                                                margin: EdgeInsets.all(10),
+                                                height: 100,
+                                                width: 100,
+                                                color: Colors.blueGrey,
+                                              );
+                                            }),
+                                        baseColor: Colors.blueGrey,
+                                        highlightColor: Colors.blueGrey,
+                                      ))
+                                  // child: CircularProgressIndicator(),
+                                  );
                             },
                           )
                   ],
                 ),
               );
             }
+
             return Center(
-              child: CircularProgressIndicator(),
-            );
+                child: Container(
+                    height: 800,
+                    width: double.infinity,
+                    child: Shimmer.fromColors(
+                      direction: ShimmerDirection.ttb,
+                      child: GridView.builder(
+                          gridDelegate:
+                              SliverGridDelegateWithFixedCrossAxisCount(
+                                  crossAxisCount: 3,
+                                  crossAxisSpacing: 5,
+                                  mainAxisSpacing: 5),
+                          itemBuilder: (context, index) {
+                            return Container(
+                              margin: EdgeInsets.all(10),
+                              height: 100,
+                              width: 100,
+                              color: Colors.blueGrey,
+                            );
+                          }),
+                      baseColor: Colors.blueGrey,
+                      highlightColor: Colors.blueGrey,
+                    ))
+                // child: CircularProgressIndicator(),
+                );
+            //  child: CircularProgressIndicator(),
           },
         ),
       ),

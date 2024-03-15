@@ -49,7 +49,7 @@ class _CommentMainWidgetState extends State<CommentMainWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: backGroundColor,
+      // backgroundColor: Colors.blue,
       appBar: AppBar(
         leading: GestureDetector(
             onTap: () => Navigator.pop(context), child: Icon(Icons.arrow_back)),
@@ -93,7 +93,7 @@ class _CommentMainWidgetState extends State<CommentMainWidget> {
                                           style: TextStyle(
                                               fontSize: 15,
                                               fontWeight: FontWeight.w200,
-                                              color: primaryColor)),
+                                              color: Colors.blueGrey)),
                                     ],
                                   ),
                                   sizeVer(10),
@@ -101,7 +101,7 @@ class _CommentMainWidgetState extends State<CommentMainWidget> {
                                     padding: const EdgeInsets.only(right: 200),
                                     child: Text(
                                       "${singlePost.description}",
-                                      style: TextStyle(color: primaryColor),
+                                      style: TextStyle(color: Colors.blueGrey),
                                     ),
                                   )
                                 ],
@@ -109,7 +109,7 @@ class _CommentMainWidgetState extends State<CommentMainWidget> {
                             ),
                             sizeVer(10),
                             Divider(
-                              color: secondaryColor,
+                              color: Colors.blueAccent,
                             ),
                             sizeVer(10),
                             Expanded(
@@ -179,11 +179,11 @@ class _CommentMainWidgetState extends State<CommentMainWidget> {
             Expanded(
                 child: TextFormField(
               controller: _descriptionController,
-              style: TextStyle(color: primaryColor),
+              style: TextStyle(color: Colors.blueGrey),
               decoration: InputDecoration(
                   border: InputBorder.none,
                   hintText: "Post your comment...",
-                  hintStyle: TextStyle(color: Colors.black)),
+                  hintStyle: TextStyle(color: Colors.red)),
             )),
             GestureDetector(
               onTap: () {
@@ -191,7 +191,7 @@ class _CommentMainWidgetState extends State<CommentMainWidget> {
               },
               child: Text(
                 "post",
-                style: TextStyle(fontSize: 15, color: blueColor),
+                style: TextStyle(fontSize: 15, color: Colors.blue),
               ),
             )
           ],
@@ -229,7 +229,7 @@ class _CommentMainWidgetState extends State<CommentMainWidget> {
         builder: (context) {
           return Container(
             height: 150,
-            decoration: BoxDecoration(color: backGroundColor.withOpacity(.8)),
+            decoration: BoxDecoration(color: Colors.grey.withOpacity(.8)),
             child: SingleChildScrollView(
               child: Container(
                 margin: EdgeInsets.symmetric(vertical: 10),
@@ -243,7 +243,7 @@ class _CommentMainWidgetState extends State<CommentMainWidget> {
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 18,
-                            color: primaryColor),
+                            color: Colors.grey),
                       ),
                     ),
                     SizedBox(
@@ -251,7 +251,7 @@ class _CommentMainWidgetState extends State<CommentMainWidget> {
                     ),
                     Divider(
                       thickness: 1,
-                      color: secondaryColor,
+                      color: Colors.blue,
                     ),
                     SizedBox(
                       height: 8,
@@ -269,14 +269,14 @@ class _CommentMainWidgetState extends State<CommentMainWidget> {
                           style: TextStyle(
                               fontWeight: FontWeight.w500,
                               fontSize: 16,
-                              color: primaryColor),
+                              color: Colors.grey),
                         ),
                       ),
                     ),
                     sizeVer(7),
                     Divider(
                       thickness: 1,
-                      color: secondaryColor,
+                      color: Colors.blue,
                     ),
                     sizeVer(7),
                     Padding(
@@ -293,7 +293,7 @@ class _CommentMainWidgetState extends State<CommentMainWidget> {
                           style: TextStyle(
                               fontWeight: FontWeight.w500,
                               fontSize: 16,
-                              color: primaryColor),
+                              color: Colors.grey),
                         ),
                       ),
                     ),

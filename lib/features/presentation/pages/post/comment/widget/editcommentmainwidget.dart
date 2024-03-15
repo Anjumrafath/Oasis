@@ -30,9 +30,9 @@ class _EditCommentMainWidgetState extends State<EditCommentMainWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: backGroundColor,
+      // backgroundColor: Colors.red,
       appBar: AppBar(
-        backgroundColor: backGroundColor,
+        //  backgroundColor: Colors.red,
         title: Text("Edit Comment"),
       ),
       body: Padding(
@@ -45,7 +45,7 @@ class _EditCommentMainWidgetState extends State<EditCommentMainWidget> {
             ),
             sizeVer(10),
             ButtonContainerWidget(
-              color: blueColor,
+              color: Colors.blue,
               text: "Save Changes",
               onTapListener: () {
                 _editComment();
@@ -58,7 +58,7 @@ class _EditCommentMainWidgetState extends State<EditCommentMainWidget> {
                     children: [
                       Text(
                         "Updating...",
-                        style: TextStyle(color: Colors.white),
+                        style: TextStyle(color: Colors.red),
                       ),
                       sizeHor(10),
                       CircularProgressIndicator(),

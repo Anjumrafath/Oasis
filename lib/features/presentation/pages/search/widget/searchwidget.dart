@@ -11,20 +11,20 @@ class SearchWidget extends StatelessWidget {
       width: double.infinity,
       height: 45,
       decoration: BoxDecoration(
-        color: secondaryColor.withOpacity(.3),
+        color: Colors.blueGrey.withOpacity(.3),
         borderRadius: BorderRadius.circular(15),
       ),
       child: TextFormField(
         controller: controller,
-        style: TextStyle(color: primaryColor),
+        style: TextStyle(color: Colors.blueGrey),
         decoration: InputDecoration(
             border: InputBorder.none,
             prefixIcon: Icon(
               Icons.search,
-              color: primaryColor,
+              color: Colors.blueGrey,
             ),
             hintText: "Search",
-            hintStyle: TextStyle(color: secondaryColor, fontSize: 15)),
+            hintStyle: TextStyle(color: Colors.grey, fontSize: 15)),
       ),
     );
   }
