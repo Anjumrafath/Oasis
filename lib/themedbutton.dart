@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:insta_cleanarchitecture/features/presentation/cubit/theme/themecubit.dart';
 
+import 'features/presentation/cubit/theme/themestate.dart';
+
 class ThemedButton extends StatelessWidget {
   const ThemedButton({Key? key}) : super(key: key);
 

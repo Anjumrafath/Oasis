@@ -7,7 +7,6 @@ import 'package:insta_cleanarchitecture/features/presentation/cubit/credential/c
 import 'package:insta_cleanarchitecture/features/presentation/pages/mainscreen/mainscreen.dart';
 import 'package:insta_cleanarchitecture/features/presentation/widgets/buttoncontainerwidget.dart';
 import 'package:insta_cleanarchitecture/features/presentation/widgets/formcontainerwidget.dart';
-
 import '../../cubit/auth/authcubit.dart';
 import '../../cubit/auth/authstate.dart';
 
@@ -107,12 +106,12 @@ class _SignInPageState extends State<SignInPage> {
                     Text(
                       "Please wait",
                       style: TextStyle(
-                          color: Colors.red,
+                          color: Colors.grey,
                           fontSize: 16,
                           fontWeight: FontWeight.w400),
                     ),
                     sizeHor(10),
-                    CircularProgressIndicator(),
+                    //  CircularProgressIndicator(),
                   ],
                 )
               : Container(width: 0, height: 0),
@@ -125,7 +124,7 @@ class _SignInPageState extends State<SignInPage> {
             flex: 2,
           ),
           Divider(
-            color: Colors.green,
+            color: Colors.grey,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,

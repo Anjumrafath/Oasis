@@ -11,6 +11,7 @@ import 'package:insta_cleanarchitecture/features/presentation/pages/credential/s
 import 'package:insta_cleanarchitecture/features/presentation/pages/mainscreen/mainscreen.dart';
 import 'package:insta_cleanarchitecture/ongenerateroute.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'features/presentation/cubit/theme/themestate.dart';
 import 'features/presentation/cubit/user/getsingleuser/getsingleusercubit.dart';
 import 'firebase_options.dart';
 import 'package:insta_cleanarchitecture/injection container.dart' as di;

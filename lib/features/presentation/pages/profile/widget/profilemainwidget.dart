@@ -154,6 +154,7 @@ class _ProfileMainWidgetState extends State<ProfileMainWidget> {
                           .where((post) =>
                               post.creatorUid == widget.currentUser.uid)
                           .toList();
+
                       return GridView.builder(
                           itemCount: posts.length,
                           physics: ScrollPhysics(),
@@ -221,7 +222,7 @@ class _ProfileMainWidgetState extends State<ProfileMainWidget> {
         builder: (context) {
           return Container(
             height: 150,
-            decoration: BoxDecoration(color: Colors.blueGrey.withOpacity(.8)),
+            decoration: BoxDecoration(color: Colors.white.withOpacity(.8)),
             child: SingleChildScrollView(
               child: Container(
                 margin: EdgeInsets.symmetric(vertical: 10),

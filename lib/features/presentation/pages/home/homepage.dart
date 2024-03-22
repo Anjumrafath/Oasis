@@ -4,6 +4,7 @@ import 'package:insta_cleanarchitecture/const.dart';
 import 'package:insta_cleanarchitecture/features/domain/entity/posts/postentity.dart';
 import 'package:insta_cleanarchitecture/features/presentation/cubit/post/postcubit.dart';
 import 'package:insta_cleanarchitecture/features/presentation/cubit/post/poststate.dart';
+import 'package:insta_cleanarchitecture/features/presentation/pages/chat/chatscreen.dart';
 import 'package:insta_cleanarchitecture/features/presentation/pages/home/widgets/singlepostcardwidget.dart';
 import 'package:insta_cleanarchitecture/injection container.dart' as di;
 import 'package:insta_cleanarchitecture/themedbutton.dart';
@@ -25,6 +26,14 @@ class HomePage extends StatelessWidget {
         ),
         actions: [
           ThemedButton(),
+          IconButton(
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => ChatScreen()));
+              },
+              icon: Icon(
+                Icons.chat,
+              )),
           Padding(
             padding: const EdgeInsets.only(right: 10.0),
             child: Icon(
@@ -84,8 +93,26 @@ class HomePage extends StatelessWidget {
             }
 
             return Center(
-              child: CircularProgressIndicator(),
-            );
+                child: Container(
+                    height: 800,
+                    width: double.infinity,
+                    child: Shimmer.fromColors(
+                      direction: ShimmerDirection.ttb,
+                      child: ListView.builder(
+                          itemCount: 6,
+                          itemBuilder: (context, index) {
+                            return Container(
+                              margin: EdgeInsets.all(20),
+                              height: 200,
+                              width: 300,
+                              color: Colors.blueGrey,
+                            );
+                          }),
+                      baseColor: Colors.blueGrey,
+                      highlightColor: Colors.blueGrey,
+                    ))
+                // child: CircularProgressIndicator(),
+                );
           },
         ),
       ),

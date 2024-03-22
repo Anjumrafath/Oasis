@@ -36,6 +36,8 @@ class _PostDetailMainWidgetState extends State<PostDetailMainWidget> {
     });
     super.initState();
   }
+ 
+  
 
   bool _isLikeAnimating = false;
   @override
@@ -305,7 +307,11 @@ class _PostDetailMainWidgetState extends State<PostDetailMainWidget> {
 
   _deletePost() {
     BlocProvider.of<PostCubit>(context)
-        .deletePost(post: PostEntity(postId: widget.postId));
+        .deletePost(post: PostEntity(postId: widget.postId))
+        .then((_) {
+      Navigator.pop(context);
+      Navigator.pop(context);
+    });
   }
 
   _likePost() {
