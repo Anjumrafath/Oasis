@@ -20,15 +20,32 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
+  late bool _isDarkMode = false;
   int _currentIndex = 0;
   late PageController pageController;
   @override
   void initState() {
     BlocProvider.of<GetSingleUserCubit>(context).getSingleUser(uid: widget.uid);
     pageController = PageController(initialPage: _currentIndex);
+    _loadTheme();
     // pageController = PageController();
 
     super.initState();
+  }
+
+  void _loadTheme() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      _isDarkMode = prefs.getBool('isDarkMode') ?? false;
+    });
+  }
+
+  void _toggleTheme(bool isDarkMode) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      _isDarkMode = isDarkMode;
+      prefs.setBool('isDarkMode', isDarkMode);
+    });
   }
 
   @override
@@ -54,55 +71,70 @@ class _MainScreenState extends State<MainScreen> {
         if (getSingleUserState is GetSingleUserLoaded) {
           final currentUser = getSingleUserState.user;
 
-          return Scaffold(
-            // backgroundColor: Colors.red,
-            bottomNavigationBar: BottomNavigationBar(
-              //  backgroundColor: Colors.red,
-              items: [
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.home, color: Colors.blueGrey),
-                  label: '',
-                ),
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.search, color: Colors.blueGrey),
-                  label: '',
-                ),
-                BottomNavigationBarItem(
-                  icon: Icon(
-                    Icons.add_circle,
-                    color: Colors.blueGrey,
+          return MaterialApp(
+            theme: ThemeData.light(),
+            darkTheme: ThemeData.dark(),
+            themeMode: _isDarkMode ? ThemeMode.dark : ThemeMode.light,
+            home: Scaffold(
+              appBar: AppBar(
+                actions: [
+                  Switch(
+                    value: _isDarkMode,
+                    onChanged: (value) {
+                      _toggleTheme(value);
+                    },
                   ),
-                  label: '',
-                ),
-                BottomNavigationBarItem(
-                  icon: Icon(
-                    Icons.favorite,
-                    color: Colors.blueGrey,
+                ],
+              ),
+              // backgroundColor: Colors.red,
+              bottomNavigationBar: BottomNavigationBar(
+                //  backgroundColor: Colors.red,
+                items: [
+                  BottomNavigationBarItem(
+                    icon: Icon(Icons.home, color: Colors.blueGrey),
+                    label: '',
                   ),
-                  label: '',
-                ),
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.account_circle_outlined,
-                      color: Colors.blueGrey),
-                  label: '',
-                ),
-              ],
-              onTap: navigationTapped,
-            ),
-            body: PageView(
-              controller: pageController,
-              children: [
-                HomePage(),
-                SearchPage(),
-                UploadPostPage(
-                  currentUser: currentUser,
-                ),
-                ActivityPage(),
-                ProfilePage(
-                  currentUser: currentUser,
-                ),
-              ],
-              onPageChanged: onPageChanged,
+                  BottomNavigationBarItem(
+                    icon: Icon(Icons.search, color: Colors.blueGrey),
+                    label: '',
+                  ),
+                  BottomNavigationBarItem(
+                    icon: Icon(
+                      Icons.add_circle,
+                      color: Colors.blueGrey,
+                    ),
+                    label: '',
+                  ),
+                  BottomNavigationBarItem(
+                    icon: Icon(
+                      Icons.favorite,
+                      color: Colors.blueGrey,
+                    ),
+                    label: '',
+                  ),
+                  BottomNavigationBarItem(
+                    icon: Icon(Icons.account_circle_outlined,
+                        color: Colors.blueGrey),
+                    label: '',
+                  ),
+                ],
+                onTap: navigationTapped,
+              ),
+              body: PageView(
+                controller: pageController,
+                children: [
+                  HomePage(),
+                  SearchPage(),
+                  UploadPostPage(
+                    currentUser: currentUser,
+                  ),
+                  ActivityPage(),
+                  ProfilePage(
+                    currentUser: currentUser,
+                  ),
+                ],
+                onPageChanged: onPageChanged,
+              ),
             ),
           );
         }
