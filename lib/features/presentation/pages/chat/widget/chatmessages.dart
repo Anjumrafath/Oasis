@@ -1,15 +1,17 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:insta_cleanarchitecture/features/presentation/pages/chat/widget/messagebubble.dart';
 
 class ChatMessages extends StatelessWidget {
-  const ChatMessages({super.key});
+  const ChatMessages({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
     final authenticatedUser = FirebaseAuth.instance.currentUser!;
+
     return StreamBuilder(
         stream: FirebaseFirestore.instance
             .collection('chat')
@@ -35,6 +37,7 @@ class ChatMessages extends StatelessWidget {
               child: Text('Something went wrong...'),
             );
           }
+
           final loadedMessages = chatSnapshots.data!.docs;
           return ListView.builder(
             padding: const EdgeInsets.only(
@@ -50,9 +53,9 @@ class ChatMessages extends StatelessWidget {
                   ? loadedMessages[index].data()
                   : null;
               final currentMessageUserId = ChatMessage['userId'];
-              // final nextMessageUserId =
-              //  nextChatMessage != null ? nextChatMessage['userId'] : null;
-              final nextMessageUserId = nextChatMessage?['userId'];
+              final nextMessageUserId =
+                  nextChatMessage != null ? nextChatMessage['userId'] : null;
+              // final nextMessageUserId = nextChatMessage?['userId'];
 
               final nextUserIsSame = nextMessageUserId == currentMessageUserId;
 

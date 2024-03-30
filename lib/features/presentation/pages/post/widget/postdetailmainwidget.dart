@@ -36,8 +36,6 @@ class _PostDetailMainWidgetState extends State<PostDetailMainWidget> {
     });
     super.initState();
   }
- 
-  
 
   bool _isLikeAnimating = false;
   @override

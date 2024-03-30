@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:insta_cleanarchitecture/profilewidget.dart';
 
@@ -34,16 +33,24 @@ class MessageBubble extends StatelessWidget {
           Positioned(
             top: 15,
             right: isMe ? 0 : null,
-            child: CircleAvatar(
-              //   backgroundImage: AssetImage(
-              //   "assets/profile.png",
-              // ),
-              //  backgroundImage: NetworkImage(
-              // userImage!,
-              // ),
-              backgroundImage: AssetImage(userImage!),
-              radius: 23,
+
+            width: 20,
+            height: 20,
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(15),
+              child: profileWidget(imageUrl: userImage),
             ),
+
+            //child: CircleAvatar(
+            //   backgroundImage: AssetImage(
+            //    "assets/profile.png",
+            //  ),
+            //   backgroundImage: NetworkImage(
+            //  userImage!,
+            //  ),
+            // backgroundImage: AssetImage(userImage!),
+            //  radius: 23,
+            //  ),
           ),
         Container(
           margin: const EdgeInsets.symmetric(horizontal: 46),
