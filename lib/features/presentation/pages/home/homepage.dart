@@ -7,7 +7,6 @@ import 'package:insta_cleanarchitecture/features/presentation/cubit/post/poststa
 import 'package:insta_cleanarchitecture/features/presentation/pages/chat/chatscreen.dart';
 import 'package:insta_cleanarchitecture/features/presentation/pages/home/widgets/singlepostcardwidget.dart';
 import 'package:insta_cleanarchitecture/injection container.dart' as di;
-import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:shimmer/shimmer.dart';
 

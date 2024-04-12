@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:insta_cleanarchitecture/const.dart';
 import 'package:insta_cleanarchitecture/features/presentation/cubit/auth/authcubit.dart';
 import 'package:insta_cleanarchitecture/features/presentation/cubit/auth/authstate.dart';
 import 'package:insta_cleanarchitecture/features/presentation/cubit/credential/credentialcubit.dart';
@@ -18,6 +17,7 @@ import 'package:insta_cleanarchitecture/injection container.dart' as di;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
   //SharedPreferences prefs = await SharedPreferences.getInstance();
   // Obtain shared preferences.
   // prefs = await SharedPreferences.getInstance();

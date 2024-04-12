@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:insta_cleanarchitecture/const.dart';
 import 'package:insta_cleanarchitecture/features/domain/entity/comment/commententity.dart';
+import 'package:insta_cleanarchitecture/features/domain/entity/posts/postentity.dart';
 import 'package:insta_cleanarchitecture/features/domain/entity/reply/replyentity.dart';
 import 'package:insta_cleanarchitecture/features/domain/entity/user/userentity.dart';
 import 'package:insta_cleanarchitecture/features/domain/usecases/user/getcurrentuidusecase.dart';
@@ -14,6 +15,8 @@ import 'package:insta_cleanarchitecture/profilewidget.dart';
 import 'package:intl/intl.dart';
 import 'package:uuid/uuid.dart';
 import 'package:insta_cleanarchitecture/injection container.dart' as di;
+
+import '../../updatepostpage.dart';
 
 class SingleCommentWidget extends StatefulWidget {
   final CommentEntity comment;
@@ -296,7 +299,11 @@ class _SingleCommentWidgetState extends State<SingleCommentWidget> {
                               context, PageConst.updateReplayPage,
                               arguments: replay);
 
-                          // Navigator.push(context, MaterialPageRoute(builder: (context) => UpdatePostPage()));
+                          //  Navigator.push(
+                          //   context,
+                          //   MaterialPageRoute(
+                          //      builder: (context) =>
+                          //         UpdatePostPage(post: PostEntity())));
                         },
                         child: Text(
                           "Update Replay",

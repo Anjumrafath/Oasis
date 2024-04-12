@@ -10,6 +10,8 @@ import 'package:insta_cleanarchitecture/features/presentation/cubit/post/poststa
 import 'package:insta_cleanarchitecture/features/presentation/cubit/user/getsingleothercubit/getsingleotherusercubit.dart';
 import 'package:insta_cleanarchitecture/features/presentation/cubit/user/getsingleothercubit/getsingleotheruserstate.dart';
 import 'package:insta_cleanarchitecture/features/presentation/cubit/user/usercubit.dart';
+import 'package:insta_cleanarchitecture/features/presentation/pages/profile/followerspage.dart';
+import 'package:insta_cleanarchitecture/features/presentation/pages/profile/followingpage.dart';
 import 'package:insta_cleanarchitecture/features/presentation/widgets/buttoncontainerwidget.dart';
 import 'package:insta_cleanarchitecture/profilewidget.dart';
 import 'package:insta_cleanarchitecture/injection container.dart' as di;
@@ -112,9 +114,15 @@ class _SingleUserProfileMainWidgetState
                               sizeHor(25),
                               GestureDetector(
                                 onTap: () {
-                                  Navigator.pushNamed(
-                                      context, PageConst.followersPage,
-                                      arguments: singleUser);
+                                  // Navigator.pushNamed(
+                                  //  context, PageConst.followersPage,
+                                  //  arguments: singleUser);
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => FollowersPage(
+                                                user: singleUser,
+                                              )));
                                 },
                                 child: Column(
                                   children: [
@@ -135,9 +143,15 @@ class _SingleUserProfileMainWidgetState
                               sizeHor(25),
                               GestureDetector(
                                 onTap: () {
-                                  Navigator.pushNamed(
-                                      context, PageConst.followingPage,
-                                      arguments: singleUser);
+                                  //  Navigator.pushNamed(
+                                  //    context, PageConst.followingPage,
+                                  //  arguments: singleUser);
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => FollowingPage(
+                                                user: singleUser,
+                                              )));
                                 },
                                 child: Column(
                                   children: [
@@ -280,7 +294,7 @@ class _SingleUserProfileMainWidgetState
                           Navigator.pushNamed(
                               context, PageConst.editProfilePage,
                               arguments: currentUser);
-                          // Navigator.push(context, MaterialPageRoute(builder: (context) => EditProfilePage()));
+                          // Navigator.push(context, MaterialPageRoute(builder: (context) => EditProfilePage(currentUser)));
                         },
                         child: Text(
                           "Edit Profile",

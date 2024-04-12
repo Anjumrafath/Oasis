@@ -72,6 +72,7 @@ class OnGenerateRoute {
           }
           return routeBuilder(NoPageFound());
         }
+
       case PageConst.postDetailPage:
         {
           if (args is String) {

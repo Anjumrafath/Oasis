@@ -5,7 +5,10 @@ import 'package:insta_cleanarchitecture/features/domain/entity/appentity.dart';
 import 'package:insta_cleanarchitecture/features/domain/entity/posts/postentity.dart';
 import 'package:insta_cleanarchitecture/features/domain/usecases/user/getcurrentuidusecase.dart';
 import 'package:insta_cleanarchitecture/features/presentation/cubit/post/postcubit.dart';
+import 'package:insta_cleanarchitecture/features/presentation/pages/post/comment/commentpage.dart';
+import 'package:insta_cleanarchitecture/features/presentation/pages/post/updatepostpage.dart';
 import 'package:insta_cleanarchitecture/features/presentation/pages/post/widget/likeanimationwidget.dart';
+import 'package:insta_cleanarchitecture/features/presentation/pages/profile/singleuserprofilepage.dart';
 import 'package:insta_cleanarchitecture/profilewidget.dart';
 import 'package:intl/intl.dart';
 import 'package:insta_cleanarchitecture/injection container.dart' as di;
@@ -138,10 +141,17 @@ class _SinglePostCardWidgetState extends State<SinglePostCardWidget> {
                   sizeHor(10),
                   GestureDetector(
                       onTap: () {
-                        Navigator.pushNamed(context, PageConst.commentPage,
-                            arguments: AppEntity(
-                                uid: _currentUid, postId: widget.post.postId));
-                        //Navigator.push(context, MaterialPageRoute(builder: (context) => CommentPage()));
+                        //  Navigator.pushNamed(context, PageConst.commentPage,
+                        //     arguments: AppEntity(
+                        //        uid: _currentUid, postId: widget.post.postId));
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => CommentPage(
+                                      appEntity: AppEntity(
+                                          postId: widget.post.postId,
+                                          uid: _currentUid),
+                                    )));
                       },
                       child: Icon(
                         Icons.add_box_rounded,
@@ -258,10 +268,15 @@ class _SinglePostCardWidgetState extends State<SinglePostCardWidget> {
                       padding: const EdgeInsets.only(left: 10.0),
                       child: GestureDetector(
                         onTap: () {
-                          Navigator.pushNamed(context, PageConst.updatePostPage,
-                              arguments: post);
+                          //  Navigator.pushNamed(context, PageConst.updatePostPage,
+                          //      arguments: post);
 
-                          // Navigator.push(context, MaterialPageRoute(builder: (context) => UpdatePostPage()));
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => UpdatePostPage(
+                                        post: post,
+                                      )));
                         },
                         child: Text(
                           "Update Post",

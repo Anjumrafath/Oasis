@@ -6,6 +6,8 @@ import 'package:insta_cleanarchitecture/features/domain/entity/user/userentity.d
 import 'package:insta_cleanarchitecture/features/presentation/cubit/auth/authcubit.dart';
 import 'package:insta_cleanarchitecture/features/presentation/cubit/post/postcubit.dart';
 import 'package:insta_cleanarchitecture/features/presentation/cubit/post/poststate.dart';
+import 'package:insta_cleanarchitecture/features/presentation/pages/post/postdetailpage.dart';
+import 'package:insta_cleanarchitecture/features/presentation/pages/profile/editprofilepage.dart';
 import 'package:insta_cleanarchitecture/profilewidget.dart';
 import 'package:shimmer/shimmer.dart';
 
@@ -253,10 +255,14 @@ class _ProfileMainWidgetState extends State<ProfileMainWidget> {
                       padding: const EdgeInsets.only(left: 10.0),
                       child: GestureDetector(
                         onTap: () {
-                          Navigator.pushNamed(
-                              context, PageConst.editProfilePage,
-                              arguments: widget.currentUser);
-                          // Navigator.push(context, MaterialPageRoute(builder: (context) => EditProfilePage()));
+                          //  Navigator.pushNamed(
+                          //  context, PageConst.editProfilePage,
+                          //   arguments: widget.currentUser);
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => EditProfilePage(
+                                      currentUser: widget.currentUser)));
                         },
                         child: Text(
                           "Edit Profile",

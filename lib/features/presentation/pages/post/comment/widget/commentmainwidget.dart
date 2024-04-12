@@ -13,6 +13,7 @@ import 'package:insta_cleanarchitecture/features/presentation/cubit/replay/repla
 import 'package:insta_cleanarchitecture/features/presentation/cubit/user/getsingleuser/getsingleusercubit.dart';
 import 'package:insta_cleanarchitecture/features/presentation/cubit/user/getsingleuser/getsingleuserstate.dart';
 import 'package:insta_cleanarchitecture/features/presentation/pages/post/comment/widget/singlecommentwidget.dart';
+
 import 'package:insta_cleanarchitecture/profilewidget.dart';
 import 'package:uuid/uuid.dart';
 import 'package:insta_cleanarchitecture/injection container.dart' as di;
@@ -243,7 +244,7 @@ class _CommentMainWidgetState extends State<CommentMainWidget> {
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 18,
-                            color: Colors.grey),
+                            color: Colors.white),
                       ),
                     ),
                     SizedBox(
@@ -286,7 +287,7 @@ class _CommentMainWidgetState extends State<CommentMainWidget> {
                           Navigator.pushNamed(context, PageConst.updatePostPage,
                               arguments: comment);
 
-                          // Navigator.push(context, MaterialPageRoute(builder: (context) => UpdatePostPage()));
+                          // Navigator.push(context, MaterialPageRoute(builder: (context) => UpdatePostPage(post: ,)));
                         },
                         child: Text(
                           "Update Comment",

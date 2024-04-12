@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:insta_cleanarchitecture/const.dart';
-import 'package:insta_cleanarchitecture/features/domain/entity/posts/postentity.dart';
 import 'package:insta_cleanarchitecture/features/presentation/cubit/user/getsingleuser/getsingleusercubit.dart';
 import 'package:insta_cleanarchitecture/features/presentation/cubit/user/getsingleuser/getsingleuserstate.dart';
 import 'package:insta_cleanarchitecture/features/presentation/pages/activity/activitypage.dart';
